@@ -6,28 +6,47 @@
     <title>About | Carlos Morales</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
+        /* --- PROFILE SECTION CSS --- */
+        /* Layout and containment for the profile info */
         .profile-header {
             display: flex;
             align-items: center;
             gap: 30px;
             margin-bottom: 40px;
-            background: rgba(0, 20, 15, 0.6);
-            border: 1px solid rgba(0, 255, 153, 0.3);
+            background: rgba(0, 20, 15, 0.6); /* Semi-transparent green background */
+            border: 1px solid rgba(0, 255, 153, 0.3); /* Cybersecurity green border */
             padding: 30px;
             border-radius: 12px;
         }
+
+        /* Styles for your Profile picture circle */
         .profile-pic {
             width: 200px;
             height: 200px;
-            border-radius: 50%;
-            border: 2px solid #00ff99;
-            object-fit: cover;
-            box-shadow: 0 0 15px rgba(0, 255, 153, 0.3);
-            flex-shrink: 0;
+            border-radius: 50%; /* Perfect circle */
+            border: 2px solid #00ff99; /* Glowing green border */
+            object-fit: cover; /* Ensures the photo fills the circle beautifully */
+            box-shadow: 0 0 15px rgba(0, 255, 153, 0.3); /* Subtle green glow */
+            flex-shrink: 0; /* Prevents the circle from being squished on mobile */
         }
-        .profile-text { flex: 1; }
+
+        .profile-text {
+            flex: 1;
+        }
+
+        /* Typography spacing */
+        .profile-text h2 {
+            margin-bottom: 10px;
+        }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        /* For phones and smaller screens */
         @media (max-width: 768px) {
-            .profile-header { flex-direction: column; text-align: center; }
+            .profile-header {
+                flex-direction: column; /* Stack vertically on small screens */
+                text-align: center;
+                gap: 15px;
+            }
         }
     </style>
 </head>
@@ -43,15 +62,18 @@
 </nav>
 
 <div class="container">
+
     <h1>About Me</h1>
 
     <div class="profile-header">
-        <img src="assets/profile.jpg" alt="Carlos Morales" class="profile-pic">
+        <img src="assets/Profile.jpg" alt="Carlos Morales" class="profile-pic">
+        
         <div class="profile-text">
             <h2>👤 Who I Am</h2>
             <p>
                 I am Carlos Morales, a Cybersecurity student at Old Dominion University specializing in IT operations, 
-                SOC analysis, and digital security systems.
+                SOC analysis, and digital security systems. I am passionate about understanding how technology, security, 
+                and society intersect in modern environments.
             </p>
         </div>
     </div>
@@ -59,17 +81,32 @@
     <div class="grid">
         <div class="card">
             <h2>🎓 Education</h2>
-            <p><strong>Old Dominion University</strong><br>B.S. in Cybersecurity<br>Expected Graduation: 2027</p>
+            <p>
+                <strong>Old Dominion University</strong><br>
+                B.S. in Cybersecurity (IT Concentration)<br>
+                Expected Graduation: Spring 2027
+            </p>
         </div>
+
         <div class="card">
             <h2>💼 Experience</h2>
             <ul style="padding-left: 20px;">
-                <li>IT Student Worker – ODU</li>
+                <li>IT Student Worker – Old Dominion University</li>
                 <li>Front Store Attendant – Target</li>
                 <li>Former Student Manager – Laredo College</li>
             </ul>
         </div>
     </div>
+
+    <div class="card" style="margin-top: 20px;">
+        <h2>🛡️ Technical Skills</h2>
+        <div class="tag">Splunk</div>
+        <div class="tag">Microsoft Sentinel</div>
+        <div class="tag">Incident Response</div>
+        <div class="tag">Linux CLI</div>
+        <div class="tag">Troubleshooting</div>
+    </div>
+
 </div>
 
 <footer>
