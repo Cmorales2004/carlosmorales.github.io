@@ -6,6 +6,7 @@
     <title>About | Carlos Morales</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
+        /* This handles the circular look for the PDF */
         .profile-header {
             display: flex;
             align-items: center;
@@ -16,15 +17,25 @@
             padding: 30px;
             border-radius: 12px;
         }
-        .profile-pic {
+
+        .profile-pic-container {
             width: 200px;
             height: 200px;
             border-radius: 50%;
+            overflow: hidden; /* Clips the PDF into a circle */
             border: 2px solid #00ff99;
-            object-fit: cover;
             box-shadow: 0 0 15px rgba(0, 255, 153, 0.3);
+            flex-shrink: 0; /* Prevents the circle from squishing */
         }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .profile-text { flex: 1; }
+
         @media (max-width: 768px) {
             .profile-header { flex-direction: column; text-align: center; }
         }
@@ -45,7 +56,10 @@
     <h1>About Me</h1>
 
     <div class="profile-header">
-        <img src="assets/professional%20picture.jpg" alt="Carlos Morales" class="profile-pic">
+        <div class="profile-pic-container">
+            <embed src="assets/Profile.pdf" type="application/pdf" class="profile-pic">
+        </div>
+        
         <div class="profile-text">
             <h2>👤 Who I Am</h2>
             <p>
@@ -66,8 +80,18 @@
             <ul style="padding-left: 20px;">
                 <li>IT Student Worker – ODU</li>
                 <li>Front Store Attendant – Target</li>
+                <li>Former Student Manager – Laredo College</li>
             </ul>
         </div>
+    </div>
+
+    <div class="card" style="margin-top: 20px;">
+        <h2>🛡️ Technical Skills</h2>
+        <div class="tag">Splunk</div>
+        <div class="tag">Microsoft Sentinel</div>
+        <div class="tag">Incident Response</div>
+        <div class="tag">Wireshark</div>
+        <div class="tag">Linux CLI</div>
     </div>
 </div>
 
