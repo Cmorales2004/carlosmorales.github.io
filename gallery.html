@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery | Cybersecurity Portfolio</title>
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== GRID ===== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 30px;
+}
+
+.gallery-item {
+    position: relative;
+    border: 1px solid rgba(0,255,153,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    background: rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: 0.4s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+    filter: brightness(0.6);
+}
+
+.gallery-item p {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    padding: 12px;
+    width: 100%;
+    background: rgba(0,0,0,0.75);
+    color: #00ff99;
+    font-size: 0.85rem;
+}
+
+/* ===== MODAL ===== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #0a1a14;
+    border: 1px solid #00ff99;
+    padding: 25px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    color: #00ff99;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    text-shadow: 0 0 10px #00ff99;
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.tag {
+    display: inline-block;
+    margin-top: 8px;
+    margin-right: 5px;
+    padding: 4px 8px;
+    border: 1px solid #00ff99;
+    border-radius: 5px;
+    font-size: 0.7rem;
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="writing.html">Writing</a>
+    <a href="gallery.html" class="active">Gallery</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+<div class="container">
+    <h1 style="text-align:center;">Cybersecurity Experience Gallery</h1>
+    <p style="text-align:center; max-width:700px; margin:auto; opacity:0.8;">
+        Click any project to view detailed case study (skills, tools, and impact).
+    </p>
+
+    <div class="gallery-grid">
+
+        <div class="gallery-item" onclick="openModal('ctf')">
+            <img src="assets/gallery1.jpg" alt="CTF">
+            <p>CTF — Threat Detection Simulation</p>
+        </div>
+
+        <div class="gallery-item" onclick="openModal('lab')">
+            <img src="assets/gallery2.jpg" alt="Lab">
+            <p>Cyber Lab — Network Traffic Analysis</p>
+        </div>
+
+        <div class="gallery-item" onclick="openModal('assignment')">
+            <img src="assets/gallery3.jpg" alt="Assignment">
+            <p>Security Risk Assessment Project</p>
+        </div>
+
+        <div class="gallery-item" onclick="openModal('event')">
+            <img src="assets/gallery4.jpg" alt="Event">
+            <p>Cybersecurity Conference Networking</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">✖</span>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+<footer>
+    © 2026 Carlos Morales | Cybersecurity Portfolio
+</footer>
+
+<script>
+const data = {
+    ctf: {
+        title: "Red vs Blue CTF Simulation",
+        desc: "Participated in a simulated attack/defense environment focusing on intrusion detection, log analysis, and threat response.",
+        tools: ["Splunk", "Wireshark", "Linux CLI"],
+        skills: ["Threat Detection", "Incident Response", "Log Analysis"]
+    },
+    lab: {
+        title: "Cybersecurity Lab Analysis",
+        desc: "Analyzed network traffic patterns and applied security controls to identify vulnerabilities and suspicious activity.",
+        tools: ["Wireshark", "Packet Tracer"],
+        skills: ["Network Analysis", "Traffic Inspection", "Security Controls"]
+    },
+    assignment: {
+        title: "Network Security Risk Assessment",
+        desc: "Academic project evaluating system vulnerabilities and proposing mitigation strategies for enterprise environments.",
+        tools: ["Documentation", "Risk Frameworks"],
+        skills: ["Risk Analysis", "Security Policy", "Reporting"]
+    },
+    event: {
+        title: "Cybersecurity Conference Participation",
+        desc: "Engaged with professionals, learned emerging threats, and explored industry tools and career pathways.",
+        tools: ["Networking", "Industry Research"],
+        skills: ["Professional Communication", "Networking", "Career Development"]
+    }
+};
+
+function openModal(key) {
+    const item = data[key];
+    document.getElementById('modal-body').innerHTML = `
+        <h2>${item.title}</h2>
+        <p>${item.desc}</p>
+        <div>
+            <strong>Tools:</strong><br>
+            ${item.tools.map(t => `<span class='tag'>${t}</span>`).join('')}
+        </div>
+        <br>
+        <div>
+            <strong>Skills:</strong><br>
+            ${item.skills.map(s => `<span class='tag'>${s}</span>`).join('')}
+        </div>
+    `;
+
+    document.getElementById('modal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+}
+
+window.onclick = function(e) {
+    if (e.target == document.getElementById('modal')) {
+        closeModal();
+    }
+}
+</script>
+
+</body>
+</html>
+<nav class="navbar">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="projects.html" class="nav-link">Projects</a>
+    <a href="writing.html" class="nav-link">Writing</a>
+    <a href="gallery.html" class="nav-link active">Gallery</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+</nav>

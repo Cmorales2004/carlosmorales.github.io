@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Carlos Morales</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            background: rgba(0, 20, 15, 0.6);
+            border: 1px solid rgba(0, 255, 153, 0.3);
+            padding: 30px;
+            border-radius: 12px;
+        }
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 2px solid #00ff99;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 255, 153, 0.3);
+        }
+        .profile-text { flex: 1; }
+        @media (max-width: 768px) {
+            .profile-header { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link active">About</a>
+    <a href="projects.html" class="nav-link">Projects</a>
+    <a href="writing.html" class="nav-link">Writing</a>
+    <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+</nav>
+
+<div class="container">
+    <h1>About Me</h1>
+
+    <div class="profile-header">
+        <img src="assets/professional%20picture.jpg" alt="Carlos Morales" class="profile-pic">
+        <div class="profile-text">
+            <h2>👤 Who I Am</h2>
+            <p>
+                I am Carlos Morales, a Cybersecurity student at Old Dominion University specializing in IT operations, 
+                SOC analysis, and digital security systems. I am passionate about understanding how technology, security, 
+                and society intersect in modern environments.
+            </p>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h2>🎓 Education</h2>
+            <p><strong>Old Dominion University</strong><br>B.S. in Cybersecurity<br>Graduation: 2027</p>
+        </div>
+        <div class="card">
+            <h2>💼 Experience</h2>
+            <ul style="padding-left: 20px;">
+                <li>IT Student Worker – ODU</li>
+                <li>Front Store Attendant – Target</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<footer>© 2026 Carlos Morales | Cybersecurity Portfolio</footer>
+</body>
+</html>
