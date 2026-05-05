@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Carlos Morales</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Projects Page Specific Styles */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: rgba(0, 20, 15, 0.7);
+            border: 1px solid rgba(0, 255, 153, 0.2);
+            padding: 25px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: #00ff99;
+            box-shadow: 0 0 20px rgba(0, 255, 153, 0.2);
+        }
+
+        .project-card h3 {
+            margin-top: 0;
+            color: #00ff99;
+            font-size: 1.4rem;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .tag-container {
+            margin-top: 15px;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #00ff99;
+            color: #00ff99;
+            border-radius: 4px;
+            background: rgba(0, 255, 153, 0.05);
+        }
+
+        /* Status Badge */
+        .status {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 10px;
+            display: block;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="projects.html" class="nav-link active">Projects</a>
+    <a href="writing.html" class="nav-link">Writing</a>
+    <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+</nav>
+
+<div class="container">
+    <h1>Technical Projects</h1>
+    <p style="text-align: center; opacity: 0.8;">Hands-on labs and security research focused on threat detection and defense.</p>
+
+    <div class="project-grid">
+
+        <div class="project-card">
+            <div>
+                <span class="status">● Completed Lab</span>
+                <h3>🔐 SIEM Log Analysis</h3>
+                <p>Configured Splunk to ingest Windows Event Logs and Sysmon data. Created custom dashboards to visualize brute-force attacks and lateral movement attempts.</p>
+            </div>
+            <div class="tag-container">
+                <span class="tag">Splunk</span>
+                <span class="tag">Blue Team</span>
+                <span class="tag">Log Analysis</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div>
+                <span class="status">● Completed Lab</span>
+                <h3>🧪 Cybersecurity Home Lab</h3>
+                <p>Deployed a virtualized environment using Proxmox and pfSense. Established a dedicated "Attack Box" (Kali Linux) and "Victim Box" (Windows Server) to practice penetration testing techniques.</p>
+            </div>
+            <div class="tag-container">
+                <span class="tag">Virtualization</span>
+                <span class="tag">Networking</span>
+                <span class="tag">Kali Linux</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div>
+                <span class="status">● Ongoing Research</span>
+                <h3>📊 Microsoft Sentinel SOC</h3>
+                <p>Setting up a cloud-native SIEM using Microsoft Sentinel. Implementing KQL (Kusto Query Language) to hunt for anomalies in Azure activity logs.</p>
+            </div>
+            <div class="tag-container">
+                <span class="tag">Azure</span>
+                <span class="tag">Sentinel</span>
+                <span class="tag">KQL</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div>
+                <span class="status">● Research</span>
+                <h3>🛡️ Incident Response Playbooks</h3>
+                <p>Developed standardized operating procedures (SOPs) for responding to common threats like phishing
