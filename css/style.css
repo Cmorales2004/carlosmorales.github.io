@@ -326,3 +326,30 @@ p {
 html {
     scroll-behavior: smooth;
 }
+/* =========================================================
+   🚀 INTERACTIVE GALLERY FIXES
+   ========================================================= */
+
+/* 1. Smooth Scrolling: Makes the page "glide" down instead of jumping instantly */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 2. Scroll Margin: This is the most important part! 
+   It tells the browser: "Stop 100px above the section" so the navbar doesn't cover the title. */
+section {
+    scroll-margin-top: 100px;
+}
+
+/* 3. Blog Container Styling: Adds some extra space between your grid and your stories */
+.blog-container {
+    margin-top: 50px;
+    padding-top: 20px;
+}
+
+/* 4. Link Clean-up: Removes the underline from the images so they look like buttons */
+.gallery-grid a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
