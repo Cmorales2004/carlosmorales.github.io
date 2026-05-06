@@ -130,6 +130,19 @@ p {
     line-height: 1.6;
     opacity: 0.9;
 }
+/* ===== TYPOGRAPHY ===== */
+h1, h2 {
+    text-align: center;
+    text-shadow: 0 0 10px #00ff99;
+}
+
+/* Add this new rule here */
+.center-text {
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin-bottom: 30px;
+}
 
 /* ===== GRID SYSTEM ===== */
 .grid,
