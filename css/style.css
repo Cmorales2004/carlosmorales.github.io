@@ -8,7 +8,57 @@ body {
     overflow-x: hidden;
 }
 
-/* ===== NAVBAR CORE ===== */
+/* ===== BACKGROUND GRID ===== */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(0,255,153,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,153,0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -2;
+    animation: gridMove 20s linear infinite;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0,255,153,0.08), transparent 60%);
+    z-index: -1;
+}
+
+@keyframes gridMove {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(50px, 50px);
+    }
+}
+
+/* ===== HEADER ===== */
+header {
+    text-align: center;
+    padding: 40px 20px 20px;
+}
+
+.center-text {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* ===== NAVBAR ===== */
 .navbar {
     position: sticky;
     top: 0;
@@ -44,38 +94,6 @@ body {
     border-bottom: 1px solid #00ff99;
 }
 
-/* ===== BACKGROUND GRID ===== */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        linear-gradient(rgba(0,255,153,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,255,153,0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
-    z-index: -2;
-    animation: gridMove 20s linear infinite;
-}
-
-body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(0,255,153,0.08), transparent 60%);
-    z-index: -1;
-}
-
-@keyframes gridMove {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(50px, 50px); }
-}
-
 /* ===== LAYOUT ===== */
 .container {
     max-width: 1000px;
@@ -84,7 +102,8 @@ body::after {
 }
 
 /* ===== TYPOGRAPHY ===== */
-h1, h2 {
+h1,
+h2 {
     text-align: center;
     text-shadow: 0 0 10px #00ff99;
 }
@@ -94,12 +113,26 @@ p {
     opacity: 0.9;
 }
 
+/* ===== HERO SECTION ===== */
+.hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.hero p {
+    max-width: 1200px;
+    margin: auto;
+}
+
 /* ===== GRID & CARDS ===== */
 .grid,
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
+    padding: 20px;
 }
 
 .card,
@@ -114,6 +147,51 @@ p {
 .card:hover,
 .project-card:hover {
     transform: translateY(-5px);
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact-strip {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.contact-strip p {
+    text-align: center;
+    margin: 0 auto 25px auto;
+    max-width: 700px;
+}
+
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    padding: 12px 22px;
+    border: 1px solid rgba(0,255,153,0.4);
+    border-radius: 8px;
+    background: rgba(0,20,15,0.5);
+    color: #00ff99;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background: rgba(0,255,153,0.12);
+    color: white;
+    box-shadow: 0 0 10px rgba(0,255,153,0.3);
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 25px;
+    opacity: 0.7;
+    font-size: 14px;
 }
 
 /* ===== TABS ===== */
@@ -146,7 +224,7 @@ p {
     color: white;
 }
 
-/* ===== TAB CONTENT (IMPORTANT FIX) ===== */
+/* ===== TAB CONTENT ===== */
 .tab-content {
     display: none;
     opacity: 0;
@@ -175,8 +253,12 @@ p {
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
 }
 
 /* ===== GLOBAL SMOOTH SCROLL ===== */
@@ -184,10 +266,11 @@ html {
     scroll-behavior: smooth;
 }
 
-/* scroll offset for navbar */
 section {
     scroll-margin-top: 100px;
 }
+
+/* ===== GALLERY ===== */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -196,16 +279,17 @@ section {
 }
 
 .gallery-item {
-    height: 220px;              /* controls size */
+    height: 220px;
     overflow: hidden;
     border-radius: 12px;
     position: relative;
+    border: 1px solid rgba(0,255,153,0.2);
 }
 
 .gallery-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover;          /* THIS fixes stretching / huge images */
+    object-fit: cover;
     display: block;
     transition: 0.3s ease;
 }
