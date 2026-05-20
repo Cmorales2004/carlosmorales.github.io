@@ -429,3 +429,21 @@ section {
     opacity: 1;
     transform: translateY(0);
 }
+
+.empty-state {
+    text-align: center;
+    margin-top: 30px;
+    opacity: 0.85;
+}
+
+.empty-state svg {
+    display: block;
+    margin: 0 auto 10px auto;
+    filter: drop-shadow(0 0 10px rgba(0,255,153,0.3));
+}
+
+.empty-state p {
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #00ff99;
+}
