@@ -158,3 +158,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+<script>
+function openTab(tabName) {
+
+    let tabs = document.querySelectorAll(".tab-content");
+    let buttons = document.querySelectorAll(".tab-button");
+
+    tabs.forEach(tab => {
+        tab.classList.remove("active");
+
+        setTimeout(() => {
+            tab.style.display = "none";
+        }, 200);
+    });
+
+    buttons.forEach(button => {
+        button.classList.remove("active-tab");
+    });
+
+    let activeTab = document.getElementById(tabName);
+
+    setTimeout(() => {
+        activeTab.style.display = "block";
+
+        requestAnimationFrame(() => {
+            activeTab.classList.add("active");
+        });
+    }, 200);
+
+    event.currentTarget.classList.add("active-tab");
+}
+
+/* DEFAULT TAB */
+document.addEventListener("DOMContentLoaded", function () {
+
+    let defaultTab = document.getElementById("cyse368");
+
+    defaultTab.style.display = "block";
+
+    requestAnimationFrame(() => {
+        defaultTab.classList.add("active");
+    });
+
+    document.querySelector(".tab-button").classList.add("active-tab");
+});
+</script>
