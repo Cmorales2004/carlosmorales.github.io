@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Writing & Research | Carlos Morales</title>
     <link rel="stylesheet" href="css/style.css">
+
     <style>
         .writing-card {
             margin-bottom: 30px;
@@ -12,6 +13,7 @@
             flex-direction: column;
             gap: 15px;
         }
+
         .bluf-box {
             background: rgba(0, 255, 153, 0.1);
             border-left: 3px solid #00ff99;
@@ -20,6 +22,7 @@
             font-size: 0.95rem;
             color: #ffffff;
         }
+
         .btn-download {
             display: inline-block;
             padding: 10px 20px;
@@ -32,72 +35,126 @@
             font-size: 14px;
             font-weight: bold;
         }
+
         .btn-download:hover {
             background: #00ff99;
             color: #050807;
             box-shadow: 0 0 15px #00ff99;
         }
+
+        .tabs {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            margin: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border: 1px solid #00ff99;
+            background: transparent;
+            color: #00ff99;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .tab-button:hover {
+            background: #00ff99;
+            color: #050807;
+        }
+
+        .tab-content {
+            display: none;
+        }
     </style>
 </head>
+
 <body>
 
 <nav class="navbar">
     <a href="index.html" class="nav-link">Home</a>
     <a href="about.html" class="nav-link">About</a>
     <a href="projects.html" class="nav-link">Projects</a>
-    <a href="writing.html" class="nav-link active">Writing</a>
+    <a href="writing.html" class="nav-link active">Publications</a>
     <a href="gallery.html" class="nav-link">Gallery</a>
     <a href="contact.html" class="nav-link">Contact</a>
 </nav>
 
-<div class="container">
+<section id="writing" class="container">
+    <h1>Research & Writing</h1>
 
-    <h1>Writing & Research</h1>
     <p style="text-align:center; margin-bottom: 40px; opacity: 0.8;">
-        Exploring the intersection of cybersecurity, policy, and human behavior.
+        Click a category below to explore my work.
     </p>
 
-    <div class="card writing-card">
-        <h2>🛡️ The Importance of Mitigating Cybersecurity Breach</h2>
-        <div class="bluf-box">
-            <strong>BLUF:</strong> In 2019, Capital One experienced a data breach caused by an exploit of existing vulnerabilities. This research examines the technical failures and the mitigation strategies necessary to prevent similar threats.
-        </div>
-        <p>An in-depth analysis of the 2019 Capital One breach, focusing on cloud misconfigurations and organizational training.</p>
-        <a href="assets/breach.pdf" class="btn-download" target="_blank">📄 Read Full Paper (PDF)</a>
+    <!-- TABS -->
+    <div class="tabs">
+        <button class="tab-button" onclick="openTab('cyse368')">CYSE 368</button>
+        <button class="tab-button" onclick="openTab('crjs215s')">CRJS 215S</button>
+        <button class="tab-button" onclick="openTab('extras')">EXTRAS</button>
     </div>
 
-    <div class="card writing-card">
-        <h2>🧑‍💻 Cybersecurity Career Professional Paper</h2>
-        <div class="bluf-box">
-            <strong>Key Insight:</strong> SOC analysts rely on an understanding of behavioral psychology to identify threats and respond effectively.
-        </div>
-        <p>This paper explores how social science concepts influence cybersecurity practice.</p>
-        <a href="assets/career.pdf" class="btn-download" target="_blank">📄 Read Full Paper (PDF)</a>
+    <!-- CYSE 368 (EMPTY) -->
+    <div id="cyse368" class="tab-content">
+        <h2>👨🏻‍💻 CYSE 368</h2>
+        <p>No papers added yet. Coming soon.</p>
     </div>
 
-    <div class="card writing-card">
-        <h2>📱 Vishing and Smishing in Nigerian Slums</h2>
-        <div class="bluf-box">
-            <strong>Key Insight:</strong> Cybercrime is shaped by complex social and economic forces.
+    <!-- CRJS 215S -->
+    <div id="crjs215s" class="tab-content">
+        <h2>🗳️ CRJS 215S</h2>
+
+        <div class="card writing-card">
+            <h3>📱 Vishing and Smishing in Nigerian Slums</h3>
+            <p>Research project analyzing social factors behind mobile phishing attacks.</p>
+            <a href="assets/vishing.pdf" class="btn-download" target="_blank">📄 Read Full Paper</a>
         </div>
-        <p>Research project analyzing the social factors that drive mobile-based phishing attacks.</p>
-        <a href="assets/vishing.pdf" class="btn-download" target="_blank">📄 Read Full Paper (PDF)</a>
+
+        <div class="card writing-card">
+            <h3>🛡️ The Importance of Mitigating Cybersecurity Breach</h3>
+            <p>Analysis of the 2019 Capital One breach and mitigation strategies.</p>
+            <a href="assets/breach.pdf" class="btn-download" target="_blank">📄 Read Full Paper</a>
+        </div>
     </div>
 
-    <div class="card writing-card">
-        <h2>📊 How Data Shapes Human Behavior and Privacy</h2>
-        <div class="bluf-box">
-            <strong>Key Insight:</strong> Cybersecurity is not just about technical protection; it relies heavily on user awareness. This research explores how personal data collection—illustrated by the $7.8M BetterHelp FTC settlement—can be weaponized to influence behavior and compromise privacy.
+    <!-- EXTRAS -->
+    <div id="extras" class="tab-content">
+        <h2>📂 EXTRAS</h2>
+
+        <div class="card writing-card">
+            <h3>🧑‍💻 Cybersecurity Career Professional Paper</h3>
+            <p>How behavioral psychology impacts SOC analyst decision-making.</p>
+            <a href="assets/career.pdf" class="btn-download" target="_blank">📄 Read Full Paper</a>
         </div>
-        <p>A comprehensive presentation examining the intersection of social science and digital security, highlighting the psychological impacts of data tracking and strategies to mitigate social engineering attacks.</p>
-        
-        <a href="assets/presentation.pdf" class="btn-download" target="_blank">🎥 View Presentation (PDF)</a>
+
+        <div class="card writing-card">
+            <h3>📊 How Data Shapes Human Behavior and Privacy</h3>
+            <p>Explores how data tracking influences privacy and behavior.</p>
+            <a href="assets/presentation.pdf" target="_blank" class="btn-download">📄 View Presentation</a>
+        </div>
     </div>
-</div>
+</section>
 
 <footer>
     © 2026 Carlos Morales | Cybersecurity Research Portfolio
 </footer>
+
+<script>
+function openTab(tabName) {
+    let tabs = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+        tab.style.display = "none";
+    });
+
+    document.getElementById(tabName).style.display = "block";
+}
+
+// default tab on load
+document.addEventListener("DOMContentLoaded", function () {
+    openTab("cyse368");
+});
+</script>
 
 </body>
 </html>
