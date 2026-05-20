@@ -188,3 +188,28 @@ html {
 section {
     scroll-margin-top: 100px;
 }
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    align-items: start;
+}
+
+.gallery-item {
+    height: 220px;              /* controls size */
+    overflow: hidden;
+    border-radius: 12px;
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;          /* THIS fixes stretching / huge images */
+    display: block;
+    transition: 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
