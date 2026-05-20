@@ -5,68 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Writing & Research | Carlos Morales</title>
     <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        .writing-card {
-            margin-bottom: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .bluf-box {
-            background: rgba(0, 255, 153, 0.1);
-            border-left: 3px solid #00ff99;
-            padding: 15px;
-            font-style: italic;
-            font-size: 0.95rem;
-            color: #ffffff;
-        }
-
-        .btn-download {
-            display: inline-block;
-            padding: 10px 20px;
-            border: 1px solid #00ff99;
-            color: #00ff99;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: 0.3s;
-            width: fit-content;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .btn-download:hover {
-            background: #00ff99;
-            color: #050807;
-            box-shadow: 0 0 15px #00ff99;
-        }
-
-        .tabs {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .tab-button {
-            margin: 5px;
-            padding: 10px 15px;
-            cursor: pointer;
-            border: 1px solid #00ff99;
-            background: transparent;
-            color: #00ff99;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-
-        .tab-button:hover {
-            background: #00ff99;
-            color: #050807;
-        }
-
-        .tab-content {
-            display: none;
-        }
-    </style>
 </head>
 
 <body>
@@ -81,6 +19,7 @@
 </nav>
 
 <section id="writing" class="container">
+
     <h1>Research & Writing</h1>
 
     <p style="text-align:center; margin-bottom: 40px; opacity: 0.8;">
@@ -89,9 +28,9 @@
 
     <!-- TABS -->
     <div class="tabs">
-        <button class="tab-button" onclick="openTab('cyse368')">CYSE 368</button>
-        <button class="tab-button" onclick="openTab('crjs215s')">CRJS 215S</button>
-        <button class="tab-button" onclick="openTab('extras')">EXTRAS</button>
+        <button class="tab-button" onclick="openTab('cyse368', event)">CYSE 368</button>
+        <button class="tab-button" onclick="openTab('crjs215s', event)">CRJS 215S</button>
+        <button class="tab-button" onclick="openTab('extras', event)">EXTRAS</button>
     </div>
 
     <!-- CYSE 368 (EMPTY) -->
@@ -104,13 +43,13 @@
     <div id="crjs215s" class="tab-content">
         <h2>🗳️ CRJS 215S</h2>
 
-        <div class="card writing-card">
+        <div class="card">
             <h3>📱 Vishing and Smishing in Nigerian Slums</h3>
             <p>Research project analyzing social factors behind mobile phishing attacks.</p>
             <a href="assets/vishing.pdf" class="btn-download" target="_blank">📄 Read Full Paper</a>
         </div>
 
-        <div class="card writing-card">
+        <div class="card">
             <h3>🛡️ The Importance of Mitigating Cybersecurity Breach</h3>
             <p>Analysis of the 2019 Capital One breach and mitigation strategies.</p>
             <a href="assets/breach.pdf" class="btn-download" target="_blank">📄 Read Full Paper</a>
@@ -121,78 +60,60 @@
     <div id="extras" class="tab-content">
         <h2>📂 EXTRAS</h2>
 
-        <div class="card writing-card">
+        <div class="card">
             <h3>🧑‍💻 Cybersecurity Career Professional Paper</h3>
             <p>How behavioral psychology impacts SOC analyst decision-making.</p>
             <a href="assets/career.pdf" class="btn-download" target="_blank">📄 Read Full Paper</a>
         </div>
 
-        <div class="card writing-card">
+        <div class="card">
             <h3>📊 How Data Shapes Human Behavior and Privacy</h3>
             <p>Explores how data tracking influences privacy and behavior.</p>
-            <a href="assets/presentation.pdf" target="_blank" class="btn-download">📄 View Presentation</a>
+            <a href="assets/presentation.pdf" target="_blank">📄 View Presentation</a>
         </div>
     </div>
+
 </section>
 
 <footer>
     © 2026 Carlos Morales | Cybersecurity Research Portfolio
 </footer>
 
+<!-- ✅ CLEAN TAB SCRIPT -->
 <script>
-function openTab(tabName) {
-    let tabs = document.querySelectorAll(".tab-content");
-
-    tabs.forEach(tab => {
-        tab.style.display = "none";
-    });
-
-    document.getElementById(tabName).style.display = "block";
-}
-
-// default tab on load
-document.addEventListener("DOMContentLoaded", function () {
-    openTab("cyse368");
-});
-</script>
-
-</body>
-</html>
-<script>
-function openTab(tabName) {
+function openTab(tabName, event) {
 
     let tabs = document.querySelectorAll(".tab-content");
     let buttons = document.querySelectorAll(".tab-button");
 
+    // hide all tabs
     tabs.forEach(tab => {
         tab.classList.remove("active");
-
-        setTimeout(() => {
-            tab.style.display = "none";
-        }, 200);
+        tab.style.display = "none";
     });
 
-    buttons.forEach(button => {
-        button.classList.remove("active-tab");
+    // reset buttons
+    buttons.forEach(btn => {
+        btn.classList.remove("active-tab");
     });
 
+    // show selected tab
     let activeTab = document.getElementById(tabName);
+    activeTab.style.display = "block";
 
-    setTimeout(() => {
-        activeTab.style.display = "block";
+    requestAnimationFrame(() => {
+        activeTab.classList.add("active");
+    });
 
-        requestAnimationFrame(() => {
-            activeTab.classList.add("active");
-        });
-    }, 200);
-
+    // highlight clicked button
     event.currentTarget.classList.add("active-tab");
 }
 
-/* DEFAULT TAB */
+/* default tab on load */
 document.addEventListener("DOMContentLoaded", function () {
 
     let defaultTab = document.getElementById("cyse368");
+    let defaultButton = document.querySelector(".tab-button");
 
     defaultTab.style.display = "block";
 
@@ -200,6 +121,9 @@ document.addEventListener("DOMContentLoaded", function () {
         defaultTab.classList.add("active");
     });
 
-    document.querySelector(".tab-button").classList.add("active-tab");
+    defaultButton.classList.add("active-tab");
 });
 </script>
+
+</body>
+</html>
