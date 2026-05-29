@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,51 +6,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Carlos Morales</title>
     <link rel="stylesheet" href="css/style.css">
+
     <style>
         /* --- PROFILE SECTION CSS --- */
-        /* Layout and containment for the profile info */
+
         .profile-header {
             display: flex;
             align-items: center;
             gap: 30px;
             margin-bottom: 40px;
-            background: rgba(0, 20, 15, 0.6); /* Semi-transparent green background */
-            border: 1px solid rgba(0, 255, 153, 0.3); /* Cybersecurity green border */
+            background: rgba(0, 20, 15, 0.6);
+            border: 1px solid rgba(0, 255, 153, 0.3);
             padding: 30px;
             border-radius: 12px;
         }
 
-        /* Styles for your Profile picture circle */
         .profile-pic {
             width: 200px;
             height: 200px;
-            border-radius: 50%; /* Perfect circle */
-            border: 2px solid #00ff99; /* Glowing green border */
-            object-fit: cover; /* Ensures the photo fills the circle beautifully */
-            box-shadow: 0 0 15px rgba(0, 255, 153, 0.3); /* Subtle green glow */
-            flex-shrink: 0; /* Prevents the circle from being squished on mobile */
+            border-radius: 50%;
+            border: 2px solid #00ff99;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 255, 153, 0.3);
+            flex-shrink: 0;
         }
 
         .profile-text {
             flex: 1;
         }
 
-        /* Typography spacing */
         .profile-text h2 {
             margin-bottom: 10px;
         }
 
-        /* --- RESPONSIVE ADJUSTMENTS --- */
-        /* For phones and smaller screens */
+        /* --- SCROLLABLE ABOUT SECTION --- */
+
+        .about-pane {
+            margin-top: 30px;
+        }
+
+        .scroll-pane {
+            max-height: 350px;
+            overflow-y: scroll;
+            padding: 25px;
+            border: 2px solid #00ff99;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 15px rgba(0,255,153,0.3);
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .scroll-pane p {
+            margin-bottom: 20px;
+        }
+
+        /* Custom Scrollbar */
+
+        .scroll-pane::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .scroll-pane::-webkit-scrollbar-thumb {
+            background: #00ff99;
+            border-radius: 10px;
+        }
+
+        .scroll-pane::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+
         @media (max-width: 768px) {
             .profile-header {
-                flex-direction: column; /* Stack vertically on small screens */
+                flex-direction: column;
                 text-align: center;
                 gap: 15px;
             }
         }
     </style>
 </head>
+
 <body>
 
 <nav class="navbar">
@@ -67,18 +105,57 @@
 
     <div class="profile-header">
         <img src="./assets/Profile.jpg" alt="Carlos Morales" class="profile-pic">
-        
+
         <div class="profile-text">
             <h2>👤 Who I Am</h2>
             <p>
-                I am Carlos Morales, a Cybersecurity student at Old Dominion University specializing in IT operations, 
-                SOC analysis, and digital security systems. I am passionate about understanding how technology, security, 
-                and society intersect in modern environments.
+                I am Carlos Morales, a Cybersecurity student at Old Dominion University specializing in IT operations,
+                SOC analysis, and digital security systems. I am passionate about understanding how technology,
+                security, and society intersect in modern environments.
             </p>
         </div>
     </div>
 
+    <!-- SCROLLABLE ABOUT SECTION -->
+
+    <section class="about-pane">
+        <h2>📖 My Journey</h2>
+
+        <div class="scroll-pane">
+
+            <p>
+                Hello, my name is Carlos Morales, and I am a Cybersecurity student at Old Dominion University with a strong interest in IT operations, SOC analysis, and digital security systems. I am passionate about understanding how technology, security, and society intersect in modern environments, and I enjoy continuously developing both my technical and professional skills.
+            </p>
+
+            <p>
+                I began my academic journey at Laredo College in Texas, where I served as a Student Orientation Leader, Senator for the Laredo College Student Government Association (LCSGA), and Treasurer for the Texas Association of Chicanos in Higher Education (TACHE). These leadership experiences strengthened my communication, teamwork, adaptability, and time management skills while teaching me the importance of supporting and connecting with others in diverse environments.
+            </p>
+
+            <p>
+                Currently, at Old Dominion University, I have expanded both my academic and professional experience through hands-on work in enterprise IT environments. With the support of my professors and mentors, I joined the ODU Division of Digital Transformation & Technology, where I gained practical experience providing IT support, troubleshooting technical issues, and working with enterprise systems that support the university community.
+            </p>
+
+            <p>
+                In addition to my university experience, I continue developing my cybersecurity knowledge through the Chegg Skills Cybersecurity Program supported by Target and the TEEM Cybersecurity Mentorship Program. These opportunities have allowed me to strengthen my understanding of cybersecurity operations while receiving career guidance and industry insight from experienced IT professionals.
+            </p>
+
+            <p>
+                Originally from Texas near the U.S.–Mexico border, I grew up in a strong Latino community that shaped my identity, values, and perspective. Moving to Virginia for my education challenged me to grow independently while staying connected to my culture and background. My family taught me the importance of humility, kindness, discipline, and hard work—values that continue to guide me throughout my academic and professional journey.
+            </p>
+
+            <p>
+                Outside of academics and technology, I value community involvement and cultural connection. Being involved in organizations such as ODU WEPA has allowed me to stay connected to my roots through music, dance, and shared experiences while also strengthening my confidence and leadership skills.
+            </p>
+
+            <p>
+                Overall, I am pursuing a career in cybersecurity while building a foundation in IT support, security operations, and enterprise technology. I am motivated by continuous learning, professional growth, and the opportunity to contribute to secure and reliable systems that positively impact organizations and communities.
+            </p>
+
+        </div>
+    </section>
+
     <div class="grid">
+
         <div class="card">
             <h2>🎓 Education</h2>
             <p>
@@ -90,16 +167,19 @@
 
         <div class="card">
             <h2>💼 Experience</h2>
+
             <ul style="padding-left: 20px;">
                 <li>IT Student Worker – Old Dominion University</li>
                 <li>Front Store Attendant – Target</li>
                 <li>Student Manager – Laredo College</li>
             </ul>
         </div>
+
     </div>
 
     <div class="card" style="margin-top: 20px;">
         <h2>🛡️ Technical Skills</h2>
+
         <div class="tag">Splunk</div>
         <div class="tag">Microsoft Sentinel</div>
         <div class="tag">Incident Response</div>
@@ -115,3 +195,4 @@
 
 </body>
 </html>
+```
