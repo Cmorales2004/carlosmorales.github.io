@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,70 +21,125 @@
 
 <section id="writing" class="container">
 
-    <h1>Research & Writing</h1>
+```
+<h1>Research & Writing</h1>
 
-    <p style="text-align:center; margin-bottom: 40px; opacity: 0.8;">
-        Click a category below to explore my work.
-    </p>
+<p style="text-align:center; margin-bottom: 40px; opacity: 0.8;">
+    Click a category below to explore my work.
+</p>
 
-    <!-- TABS -->
-    <div class="tabs">
-        <button class="tab-button" onclick="openTab('cyse368', event)">CYSE 368</button>
-        <button class="tab-button" onclick="openTab('crjs215s', event)">CRJS 215S</button>
-        <button class="tab-button" onclick="openTab('extras', event)">EXTRAS</button>
+<!-- TABS -->
+<div class="tabs">
+    <button class="tab-button" onclick="openTab('cyse368', event)">CYSE 368</button>
+    <button class="tab-button" onclick="openTab('crjs215s', event)">CRJS 215S</button>
+    <button class="tab-button" onclick="openTab('extras', event)">EXTRAS</button>
+</div>
+
+<!-- CYSE 368 -->
+<div id="cyse368" class="tab-content">
+
+    <h2>👨🏻‍💻 CYSE 368</h2>
+
+    <div class="empty-state">
+        <svg width="120" height="120" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="35"
+                    stroke="#00ff99"
+                    fill="none"
+                    stroke-width="2"/>
+
+            <path d="M30 55 L50 30 L70 55"
+                  stroke="#00ff99"
+                  fill="none"
+                  stroke-width="2"/>
+        </svg>
+
+        <p>Coming soon...</p>
     </div>
 
-    <!-- CYSE 368 (EMPTY) -->
-    <div id="cyse368" class="tab-content">
-        <h2>👨🏻‍💻 CYSE 368</h2>
-        <div class="empty-state">
-    <svg width="120" height="120" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="35" stroke="#00ff99" fill="none" stroke-width="2"/>
-        <path d="M30 55 L50 30 L70 55" stroke="#00ff99" fill="none" stroke-width="2"/>
-    </svg>
-
-    <p>Coming soon...</p>
 </div>
+
+<!-- CRJS 215S -->
+<div id="crjs215s" class="tab-content">
+
+    <h2>🗳️ CRJS 215S</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>📱 Vishing and Smishing in Nigerian Slums</h3>
+
+            <p>
+                Research project analyzing social factors behind
+                mobile phishing attacks.
+            </p>
+
+            <a href="assets/vishing.pdf"
+               class="paper-link"
+               target="_blank">
+                📄 Read Full Paper
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>🛡️ The Importance of Mitigating Cybersecurity Breaches</h3>
+
+            <p>
+                Analysis of the 2019 Capital One breach
+                and mitigation strategies.
+            </p>
+
+            <a href="assets/breach.pdf"
+               class="paper-link"
+               target="_blank">
+                📄 Read Full Paper
+            </a>
+        </div>
+
     </div>
 
-    <!-- CRJS 215S -->
-    <div id="crjs215s" class="tab-content">
-        <h2>🗳️ CRJS 215S</h2>
-
-    <div class="card">
-        <h3>📱 Vishing and Smishing in Nigerian Slums</h3>
-        <p>Research project analyzing social factors behind mobile phishing attacks.</p>
-
-        <a href="assets/vishing.pdf" class="paper-link" target="_blank">
-        📄 Read Full Paper
-    </a>
 </div>
 
-    <div class="card">
-        <h3>🛡️ The Importance of Mitigating Cybersecurity Breaches</h3>
-        <p>Analysis of the 2019 Capital One breach and mitigation strategies.</p>
+<!-- EXTRAS -->
+<div id="extras" class="tab-content">
 
-        <a href="assets/capital-one-breach.pdf" class="paper-link" target="_blank">
-        📄 Read Full Paper
-    </a>
-</div>
+    <h2>📂 EXTRAS</h2>
 
-    <!-- EXTRAS -->
-    <div id="extras" class="tab-content">
-        <h2>📂 EXTRAS</h2>
+    <div class="grid">
 
         <div class="card">
             <h3>🧑‍💻 Cybersecurity Career Professional Paper</h3>
-            <p>How behavioral psychology impacts SOC analyst decision-making.</p>
-            <a href="assets/career.pdf" class="btn-download" target="_blank">📄 Read Full Paper</a>
+
+            <p>
+                Explores how behavioral psychology and communication
+                influence SOC analyst decision-making in cybersecurity environments.
+            </p>
+
+            <a href="assets/career.pdf"
+               class="paper-link"
+               target="_blank">
+                📄 Read Full Paper
+            </a>
         </div>
 
         <div class="card">
             <h3>📊 How Data Shapes Human Behavior and Privacy</h3>
-            <p>Explores how data tracking influences privacy and behavior.</p>
-            <a href="assets/presentation.pdf" target="_blank">📄 View Presentation</a>
+
+            <p>
+                Examines how data collection, tracking technologies,
+                and digital platforms influence user privacy and online behavior.
+            </p>
+
+            <a href="assets/presentation.pdf"
+               class="paper-link"
+               target="_blank">
+                📄 View Presentation
+            </a>
         </div>
+
     </div>
+
+</div>
+```
 
 </section>
 
@@ -91,37 +147,40 @@
     © 2026 Carlos Morales | Cybersecurity Research Portfolio
 </footer>
 
-<!-- ✅ CLEAN TAB SCRIPT -->
+<!-- ===== TAB SCRIPT ===== -->
+
 <script>
+
 function openTab(tabName, event) {
 
     let tabs = document.querySelectorAll(".tab-content");
     let buttons = document.querySelectorAll(".tab-button");
 
-    // hide all tabs
+    /* hide all tabs */
     tabs.forEach(tab => {
         tab.classList.remove("active");
         tab.style.display = "none";
     });
 
-    // reset buttons
+    /* reset buttons */
     buttons.forEach(btn => {
         btn.classList.remove("active-tab");
     });
 
-    // show selected tab
+    /* show selected tab */
     let activeTab = document.getElementById(tabName);
+
     activeTab.style.display = "block";
 
     requestAnimationFrame(() => {
         activeTab.classList.add("active");
     });
 
-    // highlight clicked button
+    /* highlight active button */
     event.currentTarget.classList.add("active-tab");
 }
 
-/* default tab on load */
+/* default tab on page load */
 document.addEventListener("DOMContentLoaded", function () {
 
     let defaultTab = document.getElementById("cyse368");
@@ -134,7 +193,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     defaultButton.classList.add("active-tab");
+
 });
+
 </script>
 
 </body>
