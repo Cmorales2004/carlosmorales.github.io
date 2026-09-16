@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Enterprise IT & Cybersecurity Home Lab | Carlos Morales</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* Enterprise IT & Cybersecurity Home Lab */
+
+        .blog-container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 70px 25px 100px;
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .blog-header h1 {
+            color: #00ff99;
+            font-size: 2.6rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(0, 255, 153, 0.25);
+        }
+
+        .blog-header p {
+            color: #aaa;
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .project-status {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 6px 14px;
+            border: 1px solid #00ff99;
+            border-radius: 4px;
+            color: #00ff99;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .blog-section {
+            margin-bottom: 65px;
+        }
+
+        .blog-section h2 {
+            color: #00ff99;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 255, 153, 0.2);
+        }
+
+        .blog-section h3 {
+            color: #00ff99;
+            font-size: 1.3rem;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+
+        .blog-section p {
+            font-size: 1rem;
+            line-height: 1.85;
+            color: #ddd;
+            margin-bottom: 18px;
+        }
+
+        .blog-section ul {
+            color: #ddd;
+            line-height: 1.9;
+            padding-left: 25px;
+        }
+
+        .blog-section li {
+            margin-bottom: 7px;
+        }
+
+        pre {
+            background: #020806;
+            border: 1px solid rgba(0, 255, 153, 0.25);
+            border-left: 3px solid #00ff99;
+            padding: 20px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 25px 0;
+            box-shadow: 0 0 15px rgba(0, 255, 153, 0.05);
+        }
+
+        code {
+            color: #00ff99;
+            font-family: "Courier New", monospace;
+            font-size: 0.9rem;
+        }
+
+        .blog-image {
+            width: 100%;
+            display: block;
+            margin: 30px auto;
+            border: 1px solid rgba(0, 255, 153, 0.25);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 255, 153, 0.08);
+        }
+
+        .image-caption {
+            text-align: center;
+            color: #777;
+            font-size: 0.85rem;
+            margin-top: -18px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .architecture-box {
+            background: rgba(0, 20, 15, 0.65);
+            border: 1px solid rgba(0, 255, 153, 0.25);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            overflow-x: auto;
+        }
+
+        .architecture-box pre {
+            border: none;
+            box-shadow: none;
+            margin: 0;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .info-box {
+            background: rgba(0, 255, 153, 0.04);
+            border-left: 3px solid #00ff99;
+            padding: 20px 25px;
+            margin: 30px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .info-box p {
+            margin: 0;
+        }
+
+        .skill-group {
+            margin: 30px 0;
+        }
+
+        .skill-group h3 {
+            margin-bottom: 12px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 40px;
+            color: #00ff99;
+            text-decoration: none;
+            font-family: "Courier New", monospace;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            text-shadow: 0 0 8px #00ff99;
+        }
+
+        @media (max-width: 700px) {
+
+            .blog-container {
+                padding: 45px 18px 70px;
+            }
+
+            .blog-header h1 {
+                font-size: 2rem;
+            }
+
+            .blog-section h2 {
+                font-size: 1.5rem;
+            }
+
+            pre {
+                font-size: 0.78rem;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="../index.html" class="nav-link">Home</a>
+    <a href="../about.html" class="nav-link">About</a>
+    <a href="../projects.html" class="nav-link active">Projects</a>
+    <a href="../writing.html" class="nav-link">Publications</a>
+    <a href="../gallery.html" class="nav-link">Gallery</a>
+    <a href="../contact.html" class="nav-link">Contact</a>
+</nav>
+
+
+<main class="blog-container">
+
+    <a href="../projects.html" class="back-link">← cd ../projects</a>
+
+    <header class="blog-header">
+
+        <h1>Enterprise IT & Cybersecurity Home Lab</h1>
+
+        <p>
+            A hands-on enterprise-style IT infrastructure and cybersecurity
+            environment built with Oracle VirtualBox on a Windows host.
+        </p>
+
+        <span class="project-status">● Ongoing Lab</span>
+
+    </header>
+
+
+    <section class="blog-section">
+
+        <h2>Project Overview</h2>
+
+        <p>
+            I am building an enterprise-style IT infrastructure and cybersecurity
+            home lab using Oracle VirtualBox on a Windows host computer. The purpose
+            of this project is to gain hands-on experience with the technologies and
+            procedures used to deploy, administer, secure, troubleshoot, and document
+            IT infrastructure in a real organization.
+        </p>
+
+        <p>
+            The lab currently consists of two virtual machines:
+        </p>
+
+        <ul>
+            <li><strong>ADMIN-01 — Kali Linux:</strong> My administration and security workstation.</li>
+            <li><strong>APP-SRV-01 — Ubuntu Server:</strong> My application/server machine.</li>
+        </ul>
+
+        <p>
+            The environment is designed to allow me to practice both IT infrastructure
+            administration and cybersecurity. Rather than only studying these concepts
+            in class, I am configuring the systems myself, testing connectivity,
+            applying security controls, troubleshooting problems, and documenting my work.
+        </p>
+
+    </section>
+
+
+    <section class="blog-section">
+
+        <h2>Lab Architecture</h2>
+
+        <p>
+            The Windows computer acts as the physical host, while Oracle VirtualBox
+            provides the virtualization platform for the Linux systems.
+        </p>
+
+        <div class="architecture-box">
+
+<pre><code>
+                    WINDOWS HOST
+                         │
+                    Oracle VirtualBox
+                         │
+             ┌───────────┴───────────┐
+             │                       │
+       ADMIN-01                  APP-SRV-01
+      Kali Linux              Ubuntu Server
+     Admin/Security            Application
+      Workstation                Server
+             │                       │
+             └────── Lab Network ────┘
+                 192.168.56.0/24
+</code></pre>
+
+        </div>
+
+        <p class="image-caption">
+            Figure 1 — Enterprise-style virtual lab architecture.
+        </p>
+
+    </section>
+
+
+    <section class="blog-section">
+
+        <h2>Work Completed</h2>
+
+
+        <h3>1. Virtual Machine Deployment</h3>
+
+        <p>
+            I established the initial virtualized environment using Oracle VirtualBox.
+        </p>
+
+        <p>
+            The lab contains:
+        </p>
+
+        <ul>
+            <li>A Kali Linux virtual machine</li>
+            <li>An Ubuntu Server virtual machine</li>
+            <li>A Windows host operating system</li>
+            <li>Virtual networking between the Linux systems</li>
+        </ul>
+
+        <p>
+            Kali Linux serves as the administrative and security workstation, while
+            Ubuntu Server provides the server environment that I will continue building
+            throughout the project.
+        </p>
+
+
+        <h3>2. Ubuntu Server Configuration</h3>
+
+        <p>
+            I deployed Ubuntu Server and configured it as the primary application server.
+        </p>
+
+        <p>
+            The server was renamed from the default Ubuntu hostname to:
+        </p>
+
+<pre><code>APP-SRV-01</code></pre>
+
+        <p>
+            The hostname allows the server to follow a naming convention similar to
+            what might be used in an organizational IT environment.
+        </p>
+
+        <p>
+            The Ubuntu server uses the account:
+        </p>
+
+<pre><code>ubuntu</code></pre>
+
+        <p>
+            and the terminal prompt identifies the system as:
+        </p>
+
+<pre><code>ubuntu@app-srv-01</code></pre>
+
+
+        <h3>3. Network Configuration</h3>
+
+        <p>
+            I configured the Ubuntu server with two network interfaces.
+        </p>
+
+        <h3>Adapter 1 — NAT</h3>
+
+        <p>
+            The first interface provides external network connectivity through VirtualBox NAT.
+        </p>
+
+<pre><code>
+Interface: enp0s3
+IP Address: 10.0.2.15
+Gateway: 10.0.2.2
+</code></pre>
+
+
+        <h3>Adapter 2 — Host-Only Network</h3>
+
+        <p>
+            The second interface provides communication between the virtual machines
+            on the isolated lab network.
+        </p>
+
+<pre><code>
+Interface: enp0s8
+IP Address: 192.168.56.101
+Network: 192.168.56.0/24
+</code></pre>
+
+        <p>
+            This gives the lab a separate internal network that can be used for
+            administration, testing, and future security exercises.
+        </p>
+
+
+        <h3>4. SSH Remote Administration</h3>
+
+        <p>
+            I configured OpenSSH on the Ubuntu server so that it can be remotely
+            administered from Kali Linux.
+        </p>
+
+        <p>
+            I verified that the SSH service was active and configured the server
+            for remote administration.
+        </p>
+
+<pre><code>
+SSH
+Port: 22
+</code></pre>
+
+        <p>
+            I also tested connecting from Kali to the Ubuntu server using:
+        </p>
+
+<pre><code>ssh ubuntu@192.168.56.101</code></pre>
+
+        <p>
+            This allows Kali Linux to function as my administrative workstation
+            instead of requiring me to perform every server-management task directly
+            from the Ubuntu console.
+        </p>
+
+
+        <h3>5. SSH Key Authentication</h3>
+
+        <p>
+            I generated and configured an SSH key pair for secure remote authentication.
+        </p>
+
+        <p>
+            The Kali workstation contains an SSH private/public key pair, while the
+            Ubuntu server is configured to support public-key authentication.
+        </p>
+
+        <p>
+            This provides experience with a more secure method of remote administration
+            than relying solely on passwords.
+        </p>
+
+        <p>
+            I also configured SSH so that password-based authentication is disabled
+            after verifying that key-based authentication worked.
+        </p>
+
+        <p>
+            The goal is to reduce the risk associated with password-based remote access.
+        </p>
+
+
+        <h3>6. Linux User and Privilege Management</h3>
+
+        <p>
+            I examined the Ubuntu user's permissions and group memberships.
+        </p>
+
+        <p>
+            The <code>ubuntu</code> account has membership in groups including:
+        </p>
+
+<pre><code>
+sudo
+adm
+users
+</code></pre>
+
+        <p>
+            The <code>sudo</code> group allows the account to perform administrative
+            tasks when necessary.
+        </p>
+
+        <p>
+            This gave me hands-on experience with the Linux principle of privilege
+            management, where administrative capabilities should be controlled rather
+            than automatically granted to every user.
+        </p>
+
+
+        <h3>7. UFW Firewall Configuration</h3>
+
+        <p>
+            I configured the Uncomplicated Firewall (UFW) on the Ubuntu server.
+        </p>
+
+        <p>
+            The firewall was configured with:
+        </p>
+
+<pre><code>
+Status: active
+Logging: on (low)
+Default: deny incoming
+Default: allow outgoing
+</code></pre>
+
+        <p>
+            SSH was explicitly permitted:
+        </p>
+
+<pre><code>22/tcp     ALLOW IN</code></pre>
+
+        <p>
+            This means unsolicited incoming connections are denied by default,
+            while SSH is allowed so that I can continue administering the server
+            remotely.
+        </p>
+
+        <p>
+            The firewall configuration demonstrates the security principle of
+            default deny, where network access is restricted unless it has been
+            explicitly permitted.
+        </p>
+
+
+        <h3>8. Firewall Verification</h3>
+
+        <p>
+            After configuring UFW, I verified the firewall configuration rather
+            than assuming it was working.
+        </p>
+
+        <p>
+            The configuration was checked using:
+        </p>
+
+<pre><code>sudo ufw status verbose</code></pre>
+
+        <p>
+            The resulting configuration showed that the firewall was active and
+            that SSH was permitted.
+        </p>
+
+        <p>
+            This is an important part of infrastructure administration because
+            security configurations should be tested and verified, not simply configured.
+        </p>
+
+
+        <h3>9. Linux System Administration</h3>
+
+        <p>
+            Throughout the project, I have also practiced basic Linux system
+            administration tasks, including:
+        </p>
+
+        <ul>
+            <li>Navigating the Linux filesystem</li>
+            <li>Using the terminal</li>
+            <li>Managing users and permissions</li>
+            <li>Checking services</li>
+            <li>Working with SSH</li>
+            <li>Managing firewall rules</li>
+            <li>Checking network interfaces</li>
+            <li>Verifying IP addresses</li>
+            <li>Installing and updating packages</li>
+            <li>Troubleshooting configuration problems</li>
+        </ul>
+
+        <p>
+            I encountered and resolved several issues during the setup process,
+            which reinforced the importance of troubleshooting rather than simply
+            following installation instructions.
+        </p>
+
+
+        <h3>10. System Updates and Time Synchronization</h3>
+
+        <p>
+            I performed system updates on the Ubuntu server and encountered a
+            package-management issue related to system time synchronization.
+        </p>
+
+        <p>
+            The system initially reported a problem with repository release-file
+            timestamps. I investigated the issue and corrected the server's time
+            synchronization.
+        </p>
+
+        <p>
+            I used:
+        </p>
+
+<pre><code>chronyc makestep</code></pre>
+
+        <p>
+            to correct the system clock and then continued with package management.
+        </p>
+
+        <p>
+            This was useful troubleshooting experience because it demonstrated
+            how seemingly unrelated system settings can affect security updates
+            and package repositories.
+        </p>
+
+
+        <h3>11. Documentation</h3>
+
+        <p>
+            I am documenting the lab as I build it rather than waiting until the
+            project is finished.
+        </p>
+
+        <p>
+            My documentation includes:
+        </p>
+
+        <ul>
+            <li>Configuration steps</li>
+            <li>Commands used</li>
+            <li>Network settings</li>
+            <li>Security configurations</li>
+            <li>Troubleshooting steps</li>
+            <li>Screenshots</li>
+            <li>Successful test results</li>
+            <li>Explanations of why configurations were implemented</li>
+        </ul>
+
+        <p>
+            The goal is to create a technical record that demonstrates not only
+            what I configured, but also that I understand why the configuration matters.
+        </p>
+
+    </section>
+
+
+    <section class="blog-section">
+
+        <h2>Current Lab Status</h2>
+
+        <p>
+            At this stage, I have established the foundation of the lab:
+        </p>
+
+        <div class="architecture-box">
+
+<pre><code>
+Windows Host
+     │
+     ▼
+Oracle VirtualBox
+     │
+ ┌───┴──────────────┐
+ │                  │
+ ▼                  ▼
+Kali Linux       Ubuntu Server
+ADMIN-01         APP-SRV-01
+ │                  │
+ │                  ├── Network configured
+ │                  ├── SSH configured
+ │                  ├── SSH keys configured
+ │                  ├── Password SSH disabled
+ │                  ├── User privileges configured
+ │                  └── UFW firewall enabled
+ │
+ └─────── SSH ─────────►
+</code></pre>
+
+        </div>
+
+        <p>
+            The lab has therefore progressed from simply creating virtual machines
+            to establishing a functioning administrative and secured server environment.
+        </p>
+
+    </section>
+
+
+    <section class="blog-section">
+
+        <h2>Skills Practiced</h2>
+
+        <div class="skill-group">
+
+            <h3>IT Infrastructure</h3>
+
+            <ul>
+                <li>Virtualization</li>
+                <li>Linux server deployment</li>
+                <li>Network configuration</li>
+                <li>Server administration</li>
+                <li>Remote administration</li>
+                <li>System updates</li>
+            </ul>
+
+        </div>
+
+        <div class="skill-group">
+
+            <h3>Cybersecurity</h3>
+
+            <ul>
+                <li>Access control</li>
+                <li>Authentication</li>
+                <li>SSH hardening</li>
+                <li>Firewall configuration</li>
+                <li>Default-deny security</li>
+                <li>Least privilege</li>
+                <li>Network segmentation</li>
+                <li>Security verification</li>
+            </ul>
+
+        </div>
+
+        <div class="skill-group">
+
+            <h3>Troubleshooting</h3>
+
+            <ul>
+                <li>Network configuration</li>
+                <li>SSH connectivity</li>
+                <li>Linux services</li>
+                <li>System time synchronization</li>
+                <li>Package-management issues</li>
+            </ul>
+
+        </div>
+
+        <div class="skill-group">
+
+            <h3>Documentation</h3>
+
+            <ul>
+                <li>Technical documentation</li>
+                <li>Configuration recording</li>
+                <li>Troubleshooting documentation</li>
+                <li>Portfolio documentation</li>
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <section class="blog-section">
+
+        <h2>Next Phase</h2>
+
+        <p>
+            The current environment provides the foundation for the next stages
+            of the project. I plan to continue developing the lab by introducing
+            server applications, databases, containers, logging, monitoring,
+            and additional security testing.
+        </p>
+
+        <p>
+            The long-term goal is to evolve the environment into a small
+            enterprise-style infrastructure and cybersecurity environment where
+            I can practice:
+        </p>
+
+        <div class="architecture-box">
+
+<pre><code>
+Deployment
+    ↓
+Configuration
+    ↓
+Access Control
+    ↓
+Network Security
+    ↓
+Applications
+    ↓
+Logging & Monitoring
+    ↓
+Security Testing
+    ↓
+Incident Detection
+    ↓
+Troubleshooting
+    ↓
+Documentation
+</code></pre>
+
+        </div>
+
+        <div class="info-box">
+
+            <p>
+                This project is intended to demonstrate my ability to move beyond
+                theoretical cybersecurity knowledge and apply IT infrastructure,
+                networking, Linux administration, and security concepts in a
+                hands-on environment.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>
