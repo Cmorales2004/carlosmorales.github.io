@@ -1,45 +1,166 @@
-/* Shared site script: mobile menu, scroll reveal, rotating roles */
-document.documentElement.classList.add('js');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlos Morales | Cybersecurity & IT Professional</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
+</head>
+<body>
 
-document.addEventListener('DOMContentLoaded', function () {
+<nav class="navbar">
+    <a href="index.html" class="brand"><span class="logo">CM</span> Carlos Morales</a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <div class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="writing.html" class="nav-link">Publications</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+</nav>
 
-    /* Mobile menu */
-    var toggle = document.querySelector('.nav-toggle');
-    var links = document.querySelector('.nav-links');
-    if (toggle && links) {
-        toggle.addEventListener('click', function () {
-            links.classList.toggle('open');
-        });
-    }
+<!-- HERO -->
+<header class="hero">
+    <div class="wrap hero-inner">
+        <div>
+            <span class="eyebrow">👋 Hello, I'm</span>
+            <h1><span class="grad">Carlos Morales</span></h1>
+            <div class="role-line"><span id="typed-role">Cybersecurity Student</span><span class="caret"></span></div>
+            <p>
+                I focus on SOC operations, threat detection, and secure system analysis, and I explore how
+                technology, policy, and society connect through research and writing.
+            </p>
+            <p class="uni">Old Dominion University · B.S. Cybersecurity · Class of 2027</p>
+            <div class="hero-actions">
+                <a class="btn" href="projects.html">View My Projects →</a>
+                <a class="btn btn-ghost" href="assets/Carlos_Morales_Eportfolio%20(0).pdf" target="_blank" rel="noopener">📄 Resume</a>
+                <a class="btn btn-ghost" href="contact.html">Contact Me</a>
+            </div>
+        </div>
 
-    /* Scroll reveal */
-    var items = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) {
-                if (e.isIntersecting) {
-                    e.target.classList.add('in');
-                    io.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.12 });
-        items.forEach(function (el) { io.observe(el); });
-    } else {
-        items.forEach(function (el) { el.classList.add('in'); });
-    }
+        <div class="hero-photo">
+            <div class="photo-frame">
+                <img src="assets/Profile.jpg" alt="Carlos Morales">
+            </div>
+            <span class="chip c1">🛡️ SOC Operations</span>
+            <span class="chip c2">🐧 Linux & Networking</span>
+            <span class="chip c3">☁️ Microsoft Sentinel</span>
+        </div>
+    </div>
+</header>
 
-    /* Typing role line (home page only) */
-    var target = document.getElementById('typed-role');
-    if (target) {
-        var roles = ['Cybersecurity Student', 'IT Support Specialist', 'Aspiring SOC Analyst', 'Lifelong Learner'];
-        var r = 0, c = 0, deleting = false;
-        (function tick() {
-            var word = roles[r];
-            target.textContent = word.substring(0, c);
-            if (!deleting && c < word.length) { c++; setTimeout(tick, 80); }
-            else if (!deleting) { deleting = true; setTimeout(tick, 1600); }
-            else if (c > 0) { c--; setTimeout(tick, 40); }
-            else { deleting = false; r = (r + 1) % roles.length; setTimeout(tick, 300); }
-        })();
-    }
-});
+<!-- STATS -->
+<section class="stats">
+    <div class="wrap">
+        <div class="stats-grid reveal">
+            <div class="stat"><b>4</b><span>Technical Projects</span></div>
+            <div class="stat"><b>4</b><span>Research Papers</span></div>
+            <div class="stat"><b>2</b><span>Active Home Labs</span></div>
+            <div class="stat"><b>2027</b><span>Graduation Year</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT I DO -->
+<section class="section">
+    <div class="wrap">
+        <div class="section-head reveal">
+            <span class="eyebrow">What I Do</span>
+            <h2>Where security meets everyday IT</h2>
+            <p>Hands-on experience across security operations, enterprise IT support, and research.</p>
+        </div>
+
+        <div class="cards">
+            <div class="card reveal">
+                <div class="icon">🔐</div>
+                <h3>Cybersecurity</h3>
+                <p>Hands-on SOC analysis, SIEM tools (Splunk, Sentinel), and threat detection labs.</p>
+            </div>
+            <div class="card reveal">
+                <div class="icon i2">💻</div>
+                <h3>IT Operations</h3>
+                <p>Real-world experience in troubleshooting, system support, and service desk operations.</p>
+            </div>
+            <div class="card reveal">
+                <div class="icon i3">📚</div>
+                <h3>Research</h3>
+                <p>Writing on cybersecurity policy, digital society, and technology impacts on communities.</p>
+            </div>
+            <div class="card reveal">
+                <div class="icon i4">📈</div>
+                <h3>Goals</h3>
+                <p>Building toward SOC Analyst roles, internships, and national cybersecurity programs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section class="section alt">
+    <div class="wrap">
+        <div class="section-head reveal">
+            <span class="eyebrow">Featured Work</span>
+            <h2>Projects I'm building</h2>
+            <p>Labs and research that put classroom concepts into practice.</p>
+        </div>
+
+        <div class="project-grid">
+            <a href="projects/enterprise-it-infrastructure-home-lab.html" class="project-link reveal">
+                <div class="project-card">
+                    <div class="cover"><span>🖥️</span></div>
+                    <div class="project-body">
+                        <span class="status">Ongoing Lab</span>
+                        <h3>Enterprise IT & Cybersecurity Home Lab</h3>
+                        <p>A virtualized enterprise environment with Linux servers, SSH hardening, firewalls and network services.</p>
+                        <span class="project-more">Read the case study →</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="projects/siem-deployment-lab.html" class="project-link reveal">
+                <div class="project-card">
+                    <div class="cover c2"><span>🛡️</span></div>
+                    <div class="project-body">
+                        <span class="status">Ongoing Lab</span>
+                        <h3>SIEM Agent & Log Collector Deployment</h3>
+                        <p>Security Onion and Elastic Stack in Hyper-V, shipping real-time Windows and IIS telemetry to Logstash.</p>
+                        <span class="project-more">Read the case study →</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="projects.html" class="project-link reveal">
+                <div class="project-card">
+                    <div class="cover c3"><span>📊</span></div>
+                    <div class="project-body">
+                        <span class="status">More</span>
+                        <h3>See all projects</h3>
+                        <p>Microsoft Sentinel SOC, incident response playbooks, and more security work.</p>
+                        <span class="project-more">View all projects →</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+    <div class="wrap">
+        <div class="cta-band reveal">
+            <h2>Let's work together</h2>
+            <p>I'm open to internships, cybersecurity roles, and collaboration.</p>
+            <a class="btn" href="contact.html">Get in Touch →</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 Carlos Morales | Built with GitHub Pages
+</footer>
+
+</body>
+</html>
