@@ -5,64 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery | Carlos Morales</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
 </head>
-<body class="fade-in">
+<body>
 
 <nav class="navbar">
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="about.html" class="nav-link">About</a>
-    <a href="projects.html" class="nav-link">Projects</a>
-    <a href="writing.html" class="nav-link">Publications</a>
-    <a href="gallery.html" class="nav-link active">Gallery</a>
-    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="index.html" class="brand"><span class="logo">CM</span> Carlos Morales</a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="writing.html" class="nav-link">Publications</a>
+        <a href="gallery.html" class="nav-link active">Gallery</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+    </div>
 </nav>
 
-<div class="container">
-    <h1>Cybersecurity Experience Gallery</h1>
-    <p style="text-align:center; opacity: 0.8; margin-bottom: 40px;">
-        Visual documentation of labs, certifications, and technical research.
-    </p>
+<header class="page-hero">
+    <span class="eyebrow">Gallery</span>
+    <h1>Experience Gallery</h1>
+    <p>Visual documentation of competitions, labs, and hands-on technical experience.</p>
+</header>
 
-    <div class="gallery-grid">
-    <a href="#ctf-detail" class="gallery-link">
-        <div class="gallery-item">
-            <img src="assets/CTF2.jpg" alt="CTF">
-            <p>CTF</p>
+<section class="section">
+    <div class="wrap">
+
+        <div class="gallery-grid">
+            <a href="#ctf-detail" class="gallery-link reveal">
+                <div class="gallery-item">
+                    <img src="assets/CTF2.jpg" alt="Capture The Flag competition">
+                    <p>🚩 Capture The Flag</p>
+                </div>
+            </a>
+
+            <a href="#it-detail" class="gallery-link reveal">
+                <div class="gallery-item">
+                    <img src="assets/IT.jpeg" alt="IT student technician">
+                    <p>👨‍💻 IT Student Tech</p>
+                </div>
+            </a>
         </div>
-    </a>
-    
-    <a href="#it-detail" class="gallery-link">
-        <div class="gallery-item">
-            <img src="assets/IT.jpeg" alt="IT Tech">
-            <p>IT Student Tech</p>
+
+        <div class="detail-stack">
+
+            <section id="ctf-detail" class="card reveal">
+                <div class="icon">🚩</div>
+                <h2>Capture The Flag (CTF) Experience</h2>
+                <p>I actively participate in CTF competitions to sharpen my offensive and defensive cybersecurity skills. These events involve solving real-world security puzzles in areas like:</p>
+                <ul>
+                    <li><strong>Web Exploitation:</strong> Testing vulnerabilities in web applications.</li>
+                    <li><strong>Cryptography:</strong> Breaking down encryption methods.</li>
+                    <li><strong>Forensics:</strong> Analyzing data to find hidden artifacts.</li>
+                </ul>
+            </section>
+
+            <section id="it-detail" class="card reveal">
+                <div class="icon i2">👨‍💻</div>
+                <h2>IT Student Tech at ODU</h2>
+                <p>Working as a Student Technician has given me hands-on experience in enterprise IT environments. My responsibilities include:</p>
+                <ul>
+                    <li>Troubleshooting hardware and software issues for faculty and students.</li>
+                    <li>Managing workstation deployments and security updates.</li>
+                    <li>Ensuring secure network connectivity across various campus departments.</li>
+                </ul>
+            </section>
+
         </div>
-    </a>
+    </div>
+</section>
 
-</div>
-
-    <div class="blog-container">
-
-        <section id="ctf-detail" class="card" style="margin-top: 100px;">
-            <h2>🚩 Capture The Flag (CTF) Experience</h2>
-            <p>I actively participate in CTF competitions to sharpen my offensive and defensive cybersecurity skills. These events involve solving real-world security puzzles in areas like:</p>
-            <ul>
-                <li><strong>Web Exploitation:</strong> Testing vulnerabilities in web applications.</li>
-                <li><strong>Cryptography:</strong> Breaking down encryption methods.</li>
-                <li><strong>Forensics:</strong> Analyzing data to find hidden artifacts.</li>
-            </ul>
-        </section>
-
-        <section id="it-detail" class="card" style="margin-top: 100px;">
-            <h2>👨‍💻 IT Student Tech at ODU</h2>
-            <p>Working as a Student Technician has given me hands-on experience in enterprise IT environments. My responsibilities include:</p>
-            <ul>
-                <li>Troubleshooting hardware and software issues for faculty and students.</li>
-                <li>Managing workstation deployments and security updates.</li>
-                <li>Ensuring secure network connectivity across various campus departments.</li>
-            </ul>
-        </section>
-
-    </div> </div> <footer>
+<footer>
     © 2026 Carlos Morales | Cybersecurity Portfolio
 </footer>
 

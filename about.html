@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,190 +5,174 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Carlos Morales</title>
     <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        /* --- PROFILE SECTION CSS --- */
-
-        .profile-header {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 40px;
-            background: rgba(0, 20, 15, 0.6);
-            border: 1px solid rgba(0, 255, 153, 0.3);
-            padding: 30px;
-            border-radius: 12px;
-        }
-
-        .profile-pic {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 2px solid #00ff99;
-            object-fit: cover;
-            box-shadow: 0 0 15px rgba(0, 255, 153, 0.3);
-            flex-shrink: 0;
-        }
-
-        .profile-text {
-            flex: 1;
-        }
-
-        .profile-text h2 {
-            margin-bottom: 10px;
-        }
-
-        /* --- SCROLLABLE ABOUT SECTION --- */
-
-        .about-pane {
-            margin-top: 30px;
-        }
-
-        .scroll-pane {
-            max-height: 350px;
-            overflow-y: scroll;
-            padding: 25px;
-            border: 2px solid #00ff99;
-            border-radius: 15px;
-            background: rgba(0, 0, 0, 0.6);
-            box-shadow: 0 0 15px rgba(0,255,153,0.3);
-            line-height: 1.8;
-            text-align: left;
-        }
-
-        .scroll-pane p {
-            margin-bottom: 20px;
-        }
-
-        /* Custom Scrollbar */
-
-        .scroll-pane::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        .scroll-pane::-webkit-scrollbar-thumb {
-            background: #00ff99;
-            border-radius: 10px;
-        }
-
-        .scroll-pane::-webkit-scrollbar-track {
-            background: #111;
-        }
-
-        /* --- RESPONSIVE DESIGN --- */
-
-        @media (max-width: 768px) {
-            .profile-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-        }
-    </style>
+    <script src="js/main.js"></script>
 </head>
 
 <body>
 
 <nav class="navbar">
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="about.html" class="nav-link active">About</a>
-    <a href="projects.html" class="nav-link">Projects</a>
-    <a href="writing.html" class="nav-link">Publications</a>
-    <a href="gallery.html" class="nav-link">Gallery</a>
-    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="index.html" class="brand"><span class="logo">CM</span> Carlos Morales</a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="writing.html" class="nav-link">Publications</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+    </div>
 </nav>
 
-<div class="container">
-
+<header class="page-hero">
+    <span class="eyebrow">About</span>
     <h1>About Me</h1>
+    <p>Cybersecurity student, IT professional, and lifelong learner.</p>
+</header>
 
-    <div class="profile-header">
-        <img src="./assets/Profile.jpg" alt="Carlos Morales" class="profile-pic">
+<!-- INTRO -->
+<section class="section">
+    <div class="wrap about-top">
+        <img src="./assets/Profile.jpg" alt="Carlos Morales" class="profile-pic reveal">
 
- <div class="profile-text">
-    <h2>🌎 Beyond Technology</h2>
+        <div class="reveal">
+            <span class="eyebrow">Hello</span>
+            <h2>I'm Carlos Morales</h2>
             <p>
-                I value personal growth, accountable leadership, and cultural connection. 
-                Moving from Texas to Virginia for college challenged me to grow independently while adapting to 
-                new environments and experiences. These experiences strengthened my confidence, resilience, and 
-                ability to connect with people from diverse backgrounds—qualities that continue to shape both my 
-                academic and professional journey.
+                I am a Cybersecurity student at Old Dominion University with a strong interest in IT operations,
+                SOC analysis, and digital security systems. I am passionate about understanding how technology,
+                security, and society intersect in modern environments, and I enjoy continuously developing both
+                my technical and professional skills.
             </p>
+            <div class="quote">
+                <strong>🌎 Beyond Technology</strong><br>
+                I value personal growth, accountable leadership, and cultural connection. Moving from Texas to
+                Virginia for college challenged me to grow independently while adapting to new environments and
+                experiences. These experiences strengthened my confidence, resilience, and ability to connect with
+                people from diverse backgrounds—qualities that continue to shape both my academic and professional journey.
+            </div>
         </div>
     </div>
+</section>
 
-    <!-- SCROLLABLE ABOUT SECTION -->
-
-    <section class="about-pane">
-        <h2>📖 My Journey</h2>
-
-        <div class="scroll-pane">
-
-            <p>
-                Hello, my name is Carlos Morales, and I am a Cybersecurity student at Old Dominion University with a strong interest in IT operations, SOC analysis, and digital security systems. I am passionate about understanding how technology, security, and society intersect in modern environments, and I enjoy continuously developing both my technical and professional skills.
-            </p>
-
-            <p>
-                I began my academic journey at Laredo College in Texas, where I served as a Student Orientation Leader, Senator for the Laredo College Student Government Association (LCSGA), and Treasurer for the Texas Association of Chicanos in Higher Education (TACHE). These leadership experiences strengthened my communication, teamwork, adaptability, and time management skills while teaching me the importance of supporting and connecting with others in diverse environments.
-            </p>
-
-            <p>
-                Currently, at Old Dominion University, I have expanded both my academic and professional experience through hands-on work in enterprise IT environments. With the support of my professors and mentors, I joined the ODU Division of Digital Transformation & Technology, where I gained practical experience providing IT support, troubleshooting technical issues, and working with enterprise systems that support the university community.
-            </p>
-
-            <p>
-                In addition to my university experience, I continue developing my cybersecurity knowledge through the Chegg Skills Cybersecurity Program supported by Target and the TEEM Cybersecurity Mentorship Program. These opportunities have allowed me to strengthen my understanding of cybersecurity operations while receiving career guidance and industry insight from experienced IT professionals.
-            </p>
-
-            <p>
-                Originally from Texas near the U.S.–Mexico border, I grew up in a strong Latino community that shaped my identity, values, and perspective. Moving to Virginia for my education challenged me to grow independently while staying connected to my culture and background. My family taught me the importance of humility, kindness, discipline, and hard work—values that continue to guide me throughout my academic and professional journey.
-            </p>
-
-            <p>
-                Outside of academics and technology, I value community involvement and cultural connection. Being involved in organizations such as ODU WEPA has allowed me to stay connected to my roots through music, dance, and shared experiences while also strengthening my confidence and leadership skills.
-            </p>
-
-            <p>
-                Overall, I am pursuing a career in cybersecurity while building a foundation in IT support, security operations, and enterprise technology. I am motivated by continuous learning, professional growth, and the opportunity to contribute to secure and reliable systems that positively impact organizations and communities.
-            </p>
-
-        </div>
-    </section>
-
-    <div class="grid">
-
-        <div class="card">
-            <h2>🎓 Education</h2>
-            <p>
-                <strong>Old Dominion University</strong><br>
-                B.S. in Cybersecurity (IT Concentration)<br>
-                Expected Graduation: Spring 2027
-            </p>
+<!-- JOURNEY -->
+<section class="section alt">
+    <div class="wrap">
+        <div class="section-head reveal">
+            <span class="eyebrow">My Journey</span>
+            <h2>How I got here</h2>
         </div>
 
-        <div class="card">
-            <h2>💼 Experience</h2>
+        <div class="timeline">
 
-            <ul style="padding-left: 20px;">
-                <li>IT Student Worker – Old Dominion University</li>
-                <li>Front Store Attendant – Target</li>
-                <li>Student Manager – Laredo College</li>
-            </ul>
+            <div class="t-item reveal">
+                <div class="card">
+                    <h3>🎓 Laredo College, Texas</h3>
+                    <p>
+                        I began my academic journey at Laredo College, where I served as a Student Orientation Leader,
+                        Senator for the Laredo College Student Government Association (LCSGA), and Treasurer for the
+                        Texas Association of Chicanos in Higher Education (TACHE). These leadership experiences
+                        strengthened my communication, teamwork, adaptability, and time management skills while teaching
+                        me the importance of supporting and connecting with others in diverse environments.
+                    </p>
+                </div>
+            </div>
+
+            <div class="t-item reveal">
+                <div class="card">
+                    <h3>💻 Old Dominion University</h3>
+                    <p>
+                        At ODU, I expanded both my academic and professional experience through hands-on work in
+                        enterprise IT environments. With the support of my professors and mentors, I joined the ODU
+                        Division of Digital Transformation & Technology, where I gained practical experience providing
+                        IT support, troubleshooting technical issues, and working with enterprise systems that support
+                        the university community.
+                    </p>
+                </div>
+            </div>
+
+            <div class="t-item reveal">
+                <div class="card">
+                    <h3>🛡️ Programs & Mentorship</h3>
+                    <p>
+                        I continue developing my cybersecurity knowledge through the Chegg Skills Cybersecurity Program
+                        supported by Target and the TEEM Cybersecurity Mentorship Program. These opportunities have
+                        strengthened my understanding of cybersecurity operations while giving me career guidance and
+                        industry insight from experienced IT professionals.
+                    </p>
+                </div>
+            </div>
+
+            <div class="t-item reveal">
+                <div class="card">
+                    <h3>🌵 My Roots & Community</h3>
+                    <p>
+                        Originally from Texas near the U.S.–Mexico border, I grew up in a strong Latino community that
+                        shaped my identity, values, and perspective. My family taught me the importance of humility,
+                        kindness, discipline, and hard work.
+                    </p>
+                    <p>
+                        Being involved in organizations such as ODU WEPA has allowed me to stay connected to my roots
+                        through music, dance, and shared experiences while strengthening my confidence and leadership skills.
+                    </p>
+                </div>
+            </div>
+
+            <div class="t-item reveal">
+                <div class="card">
+                    <h3>🚀 Looking Ahead</h3>
+                    <p>
+                        I am pursuing a career in cybersecurity while building a foundation in IT support, security
+                        operations, and enterprise technology. I am motivated by continuous learning, professional
+                        growth, and the opportunity to contribute to secure and reliable systems that positively impact
+                        organizations and communities.
+                    </p>
+                </div>
+            </div>
+
         </div>
-
     </div>
+</section>
 
-    <div class="card" style="margin-top: 20px;">
-        <h2>🛡️ Technical Skills</h2>
+<!-- QUICK FACTS -->
+<section class="section">
+    <div class="wrap">
+        <div class="cards">
 
-        <div class="tag">Splunk</div>
-        <div class="tag">Microsoft Sentinel</div>
-        <div class="tag">Incident Response</div>
-        <div class="tag">Linux CLI</div>
-        <div class="tag">Troubleshooting</div>
+            <div class="card reveal">
+                <div class="icon">🎓</div>
+                <h3>Education</h3>
+                <p>
+                    <strong>Old Dominion University</strong><br>
+                    B.S. in Cybersecurity (IT Concentration)<br>
+                    Expected Graduation: Spring 2027
+                </p>
+            </div>
+
+            <div class="card reveal">
+                <div class="icon i2">💼</div>
+                <h3>Experience</h3>
+                <ul>
+                    <li>IT Student Worker – Old Dominion University</li>
+                    <li>Front Store Attendant – Target</li>
+                    <li>Student Manager – Laredo College</li>
+                </ul>
+            </div>
+
+            <div class="card reveal">
+                <div class="icon i3">🛠️</div>
+                <h3>Technical Skills</h3>
+                <div class="tag-container">
+                    <span class="tag">Splunk</span>
+                    <span class="tag">Microsoft Sentinel</span>
+                    <span class="tag">Incident Response</span>
+                    <span class="tag">Linux CLI</span>
+                    <span class="tag">Troubleshooting</span>
+                </div>
+            </div>
+
+        </div>
     </div>
-
-</div>
+</section>
 
 <footer>
     © 2026 Carlos Morales | Cybersecurity Portfolio
@@ -197,4 +180,3 @@
 
 </body>
 </html>
-```

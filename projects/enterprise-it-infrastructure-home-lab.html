@@ -3,227 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Enterprise IT & Cybersecurity Home Lab | Carlos Morales</title>
-
     <link rel="stylesheet" href="../css/style.css">
-
-    <style>
-        /* Enterprise IT & Cybersecurity Home Lab */
-
-        .blog-container {
-            max-width: 950px;
-            margin: 0 auto;
-            padding: 70px 25px 100px;
-        }
-
-        .blog-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .blog-header h1 {
-            color: #00ff99;
-            font-size: 2.6rem;
-            margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(0, 255, 153, 0.25);
-        }
-
-        .blog-header p {
-            color: #aaa;
-            font-size: 1rem;
-            line-height: 1.7;
-            max-width: 750px;
-            margin: 0 auto;
-        }
-
-        .project-status {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 6px 14px;
-            border: 1px solid #00ff99;
-            border-radius: 4px;
-            color: #00ff99;
-            font-size: 12px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .blog-section {
-            margin-bottom: 65px;
-        }
-
-        .blog-section h2 {
-            color: #00ff99;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(0, 255, 153, 0.2);
-        }
-
-        .blog-section h3 {
-            color: #00ff99;
-            font-size: 1.3rem;
-            margin-top: 35px;
-            margin-bottom: 15px;
-        }
-
-        .blog-section p {
-            font-size: 1rem;
-            line-height: 1.85;
-            color: #ddd;
-            margin-bottom: 18px;
-        }
-
-        .blog-section ul {
-            color: #ddd;
-            line-height: 1.9;
-            padding-left: 25px;
-        }
-
-        .blog-section li {
-            margin-bottom: 7px;
-        }
-
-        pre {
-            background: #020806;
-            border: 1px solid rgba(0, 255, 153, 0.25);
-            border-left: 3px solid #00ff99;
-            padding: 20px;
-            border-radius: 6px;
-            overflow-x: auto;
-            margin: 25px 0;
-            box-shadow: 0 0 15px rgba(0, 255, 153, 0.05);
-        }
-
-        code {
-            color: #00ff99;
-            font-family: "Courier New", monospace;
-            font-size: 0.9rem;
-        }
-
-        .blog-image {
-            width: 100%;
-            display: block;
-            margin: 30px auto;
-            border: 1px solid rgba(0, 255, 153, 0.25);
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 255, 153, 0.08);
-        }
-
-        .image-caption {
-            text-align: center;
-            color: #777;
-            font-size: 0.85rem;
-            margin-top: -18px;
-            margin-bottom: 30px;
-            font-style: italic;
-        }
-
-        .architecture-box {
-            background: rgba(0, 20, 15, 0.65);
-            border: 1px solid rgba(0, 255, 153, 0.25);
-            border-radius: 10px;
-            padding: 30px;
-            margin: 30px 0;
-            text-align: center;
-            overflow-x: auto;
-        }
-
-        .architecture-box pre {
-            border: none;
-            box-shadow: none;
-            margin: 0;
-            display: inline-block;
-            text-align: left;
-        }
-
-        .info-box {
-            background: rgba(0, 255, 153, 0.04);
-            border-left: 3px solid #00ff99;
-            padding: 20px 25px;
-            margin: 30px 0;
-            border-radius: 0 6px 6px 0;
-        }
-
-        .info-box p {
-            margin: 0;
-        }
-
-        .skill-group {
-            margin: 30px 0;
-        }
-
-        .skill-group h3 {
-            margin-bottom: 12px;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 40px;
-            color: #00ff99;
-            text-decoration: none;
-            font-family: "Courier New", monospace;
-            font-size: 0.9rem;
-        }
-
-        .back-link:hover {
-            text-shadow: 0 0 8px #00ff99;
-        }
-
-        @media (max-width: 700px) {
-
-            .blog-container {
-                padding: 45px 18px 70px;
-            }
-
-            .blog-header h1 {
-                font-size: 2rem;
-            }
-
-            .blog-section h2 {
-                font-size: 1.5rem;
-            }
-
-            pre {
-                font-size: 0.78rem;
-                padding: 15px;
-            }
-        }
-    </style>
+    <script src="../js/main.js"></script>
 </head>
 
 <body>
 
 <nav class="navbar">
-    <a href="../index.html" class="nav-link">Home</a>
-    <a href="../about.html" class="nav-link">About</a>
-    <a href="../projects.html" class="nav-link active">Projects</a>
-    <a href="../writing.html" class="nav-link">Publications</a>
-    <a href="../gallery.html" class="nav-link">Gallery</a>
-    <a href="../contact.html" class="nav-link">Contact</a>
+    <a href="../index.html" class="brand"><span class="logo">CM</span> Carlos Morales</a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <div class="nav-links">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../about.html" class="nav-link">About</a>
+        <a href="../projects.html" class="nav-link active">Projects</a>
+        <a href="../writing.html" class="nav-link">Publications</a>
+        <a href="../gallery.html" class="nav-link">Gallery</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+    </div>
 </nav>
 
+<header class="page-hero">
+    <span class="eyebrow">Case Study · Ongoing Lab</span>
+    <h1>Enterprise IT & Cybersecurity Home Lab</h1>
+    <p>A hands-on enterprise-style IT infrastructure and cybersecurity environment built with Oracle VirtualBox on a Windows host.</p>
+</header>
 
 <main class="blog-container">
 
-    <a href="../projects.html" class="back-link">← cd ../projects</a>
+    <a href="../projects.html" class="back-link">← Back to projects</a>
 
-    <header class="blog-header">
-
-        <h1>Enterprise IT & Cybersecurity Home Lab</h1>
-
-        <p>
-            A hands-on enterprise-style IT infrastructure and cybersecurity
-            environment built with Oracle VirtualBox on a Windows host.
-        </p>
-
-        <span class="project-status">● Ongoing Lab</span>
-
-    </header>
-
-
-    <section class="blog-section">
+<section class="blog-section">
 
         <h2>Project Overview</h2>
 
@@ -783,6 +593,10 @@ Documentation
     </section>
 
 </main>
+
+<footer>
+    © 2026 Carlos Morales | Cybersecurity Portfolio
+</footer>
 
 </body>
 </html>

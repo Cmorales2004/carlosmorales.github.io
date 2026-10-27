@@ -5,185 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Carlos Morales</title>
     <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        /* Projects Page Specific Styles */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        /* Clickable card wrapper */
-        .project-link {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .project-card {
-            background: rgba(0, 20, 15, 0.7);
-            border: 1px solid rgba(0, 255, 153, 0.2);
-            padding: 25px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            border-color: #00ff99;
-            box-shadow: 0 0 20px rgba(0, 255, 153, 0.2);
-            cursor: pointer;
-        }
-
-        .project-card h3 {
-            margin-top: 0;
-            color: #00ff99;
-            font-size: 1.4rem;
-        }
-
-        .project-card p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-
-        .tag-container {
-            margin-top: 15px;
-        }
-
-        .tag {
-            display: inline-block;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 4px 10px;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            border: 1px solid #00ff99;
-            color: #00ff99;
-            border-radius: 4px;
-            background: rgba(0, 255, 153, 0.05);
-        }
-
-        /* Status Badge */
-        .status {
-            font-size: 12px;
-            color: #888;
-            margin-bottom: 10px;
-            display: block;
-            font-style: italic;
-        }
-    </style>
+    <script src="js/main.js"></script>
 </head>
 
 <body>
 
 <nav class="navbar">
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="about.html" class="nav-link">About</a>
-    <a href="projects.html" class="nav-link active">Projects</a>
-    <a href="writing.html" class="nav-link">Publications</a>
-    <a href="gallery.html" class="nav-link">Gallery</a>
-    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="index.html" class="brand"><span class="logo">CM</span> Carlos Morales</a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="projects.html" class="nav-link active">Projects</a>
+        <a href="writing.html" class="nav-link">Publications</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+    </div>
 </nav>
 
-<div class="container">
+<header class="page-hero">
+    <span class="eyebrow">Portfolio</span>
     <h1>Technical Projects</h1>
-    <p style="text-align: center; opacity: 0.8;">
-        Hands-on labs and security research focused on threat detection and defense.
-    </p>
+    <p>Hands-on labs and security research focused on IT infrastructure, threat detection, and defense.</p>
+</header>
 
-    <div class="project-grid">
+<section class="section">
+    <div class="wrap">
+        <div class="project-grid">
 
-        <!-- ENTERPRISE IT INFRASTRUCTURE & CYBERSECURITY HOME LAB -->
-        <a href="projects/enterprise-it-infrastructure-home-lab.html" class="project-link">
-            <div class="project-card">
-                <div>
-                    <span class="status">● Ongoing Lab</span>
-                    <h3>🖥️ Enterprise IT Infrastructure & Cybersecurity Home Lab</h3>
-                    <p>
-                        Built an enterprise-style virtualized environment to practice IT infrastructure,
-                        networking, system administration, and cybersecurity. Configured Linux servers,
-                        SSH, user privileges, firewalls, network services, and security tools.
-                    </p>
+            <!-- ENTERPRISE IT INFRASTRUCTURE & CYBERSECURITY HOME LAB -->
+            <a href="projects/enterprise-it-infrastructure-home-lab.html" class="project-link reveal">
+                <div class="project-card">
+                    <div class="cover"><span>🖥️</span></div>
+                    <div class="project-body">
+                        <span class="status">Ongoing Lab</span>
+                        <h3>Enterprise IT Infrastructure & Cybersecurity Home Lab</h3>
+                        <p>
+                            Built an enterprise-style virtualized environment to practice IT infrastructure,
+                            networking, system administration, and cybersecurity. Configured Linux servers,
+                            SSH, user privileges, firewalls, network services, and security tools.
+                        </p>
+                        <div class="tag-container">
+                            <span class="tag">Linux</span>
+                            <span class="tag">Networking</span>
+                            <span class="tag">Cybersecurity</span>
+                            <span class="tag">Virtualization</span>
+                        </div>
+                        <span class="project-more">Read the case study →</span>
+                    </div>
                 </div>
-                <div class="tag-container">
-                    <span class="tag">Linux</span>
-                    <span class="tag">Networking</span>
-                    <span class="tag">Cybersecurity</span>
-                    <span class="tag">Virtualization</span>
-                </div>
-            </div>
-        </a>
+            </a>
 
-        <!-- SIEM AGENT & LOG COLLECTOR DEPLOYMENT -->
-        <a href="projects/siem-deployment-lab.html" class="project-link">
-            <div class="project-card">
-                <div>
-                    <span class="status">● Ongoing Lab</span>
-                    <h3>🛡️ SIEM Agent & Log Collector Deployment</h3>
-                    <p>
-                        Configured a multi-node enterprise environment in Hyper-V using Security Onion
-                        and Elastic Stack. Deployed Winlogbeat agents and tuned IIS Event Tracing for
-                        Windows (ETW) to ship real-time system and web application telemetry to Logstash
-                        on port 5044.
-                    </p>
+            <!-- SIEM AGENT & LOG COLLECTOR DEPLOYMENT -->
+            <a href="projects/siem-deployment-lab.html" class="project-link reveal">
+                <div class="project-card">
+                    <div class="cover c2"><span>🛡️</span></div>
+                    <div class="project-body">
+                        <span class="status">Ongoing Lab</span>
+                        <h3>SIEM Agent & Log Collector Deployment</h3>
+                        <p>
+                            Configured a multi-node enterprise environment in Hyper-V using Security Onion
+                            and Elastic Stack. Deployed Winlogbeat agents and tuned IIS Event Tracing for
+                            Windows (ETW) to ship real-time system and web application telemetry to Logstash
+                            on port 5044.
+                        </p>
+                        <div class="tag-container">
+                            <span class="tag">SIEM</span>
+                            <span class="tag">Logstash</span>
+                            <span class="tag">Winlogbeat</span>
+                            <span class="tag">IIS / ETW</span>
+                            <span class="tag">Security Onion</span>
+                        </div>
+                        <span class="project-more">Read the case study →</span>
+                    </div>
                 </div>
-                <div class="tag-container">
-                    <span class="tag">SIEM</span>
-                    <span class="tag">Logstash</span>
-                    <span class="tag">Winlogbeat</span>
-                    <span class="tag">IIS / ETW</span>
-                    <span class="tag">Security Onion</span>
-                </div>
-            </div>
-        </a>
+            </a>
 
-        <!-- SENTINEL SOC -->
-        <a href="projects/sentinel-soc.html" class="project-link">
-            <div class="project-card">
-                <div>
-                    <span class="status">● Ongoing Research</span>
-                    <h3>📊 Microsoft Sentinel SOC</h3>
-                    <p>
-                        Setting up a cloud-native SIEM using Microsoft Sentinel. Implementing KQL (Kusto Query Language)
-                        to hunt for anomalies in Azure activity logs.
-                    </p>
+            <!-- SENTINEL SOC -->
+            <a href="projects/sentinel-soc.html" class="project-link reveal">
+                <div class="project-card">
+                    <div class="cover c3"><span>📊</span></div>
+                    <div class="project-body">
+                        <span class="status">Ongoing Research</span>
+                        <h3>Microsoft Sentinel SOC</h3>
+                        <p>
+                            Setting up a cloud-native SIEM using Microsoft Sentinel. Implementing KQL (Kusto Query Language)
+                            to hunt for anomalies in Azure activity logs.
+                        </p>
+                        <div class="tag-container">
+                            <span class="tag">Azure</span>
+                            <span class="tag">Sentinel</span>
+                            <span class="tag">KQL</span>
+                        </div>
+                        <span class="project-more">Read the case study →</span>
+                    </div>
                 </div>
-                <div class="tag-container">
-                    <span class="tag">Azure</span>
-                    <span class="tag">Sentinel</span>
-                    <span class="tag">KQL</span>
-                </div>
-            </div>
-        </a>
+            </a>
 
-        <!-- INCIDENT RESPONSE -->
-        <a href="projects/incident-response-playbooks.html" class="project-link">
-            <div class="project-card">
-                <div>
-                    <span class="status">● Research</span>
-                    <h3>🛡️ Incident Response Playbooks</h3>
-                    <p>
-                        Developed standardized operating procedures (SOPs) for responding to common threats like phishing,
-                        malware incidents, and suspicious network activity.
-                    </p>
+            <!-- INCIDENT RESPONSE -->
+            <a href="projects/incident-response-playbooks.html" class="project-link reveal">
+                <div class="project-card">
+                    <div class="cover c4"><span>🚨</span></div>
+                    <div class="project-body">
+                        <span class="status">Research</span>
+                        <h3>Incident Response Playbooks</h3>
+                        <p>
+                            Developed standardized operating procedures (SOPs) for responding to common threats like phishing,
+                            malware incidents, and suspicious network activity.
+                        </p>
+                        <div class="tag-container">
+                            <span class="tag">Incident Response</span>
+                            <span class="tag">SOC</span>
+                            <span class="tag">Security Ops</span>
+                        </div>
+                        <span class="project-more">Read the case study →</span>
+                    </div>
                 </div>
-                <div class="tag-container">
-                    <span class="tag">Incident Response</span>
-                    <span class="tag">SOC</span>
-                    <span class="tag">Security Ops</span>
-                </div>
-            </div>
-        </a>
+            </a>
 
+        </div>
     </div>
-</div>
+</section>
+
+<footer>
+    © 2026 Carlos Morales | Cybersecurity Portfolio
+</footer>
 
 </body>
 </html>
