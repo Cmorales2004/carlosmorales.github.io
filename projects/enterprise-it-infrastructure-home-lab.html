@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise IT & Cybersecurity Home Lab | Carlos Morales</title>
+    <title>Wireless Network Security Audit | Carlos Morales</title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/main.js"></script>
 </head>
@@ -24,77 +24,63 @@
 </nav>
 
 <header class="page-hero">
-    <span class="eyebrow">Case Study · Ongoing Lab</span>
-    <h1>Enterprise IT & Cybersecurity Home Lab</h1>
-    <p>A hands-on enterprise-style IT infrastructure and cybersecurity environment built with Oracle VirtualBox on a Windows host.</p>
+    <span class="eyebrow">Case Study · Lab Exercise</span>
+    <h1>Wireless Network Security Audit</h1>
+    <p>WEP key recovery and an introduction to WPA/WPA2 decryption, performed in a Kali Linux lab environment.</p>
 </header>
 
 <main class="blog-container">
 
     <a href="../projects.html" class="back-link">← Back to projects</a>
 
-<section class="blog-section">
+    <section class="blog-section">
 
         <h2>Project Overview</h2>
 
         <p>
-            I am building an enterprise-style IT infrastructure and cybersecurity
-            home lab using Oracle VirtualBox on a Windows host computer. The purpose
-            of this project is to gain hands-on experience with the technologies and
-            procedures used to deploy, administer, secure, troubleshoot, and document
-            IT infrastructure in a real organization.
+            In this lab, I performed a wireless network security audit focused on recovering a WEP
+            (Wired Equivalent Privacy) encryption key from a captured packet file, using the industry-standard
+            Aircrack-ng suite inside a Kali Linux workstation.
         </p>
 
         <p>
-            The lab currently consists of two virtual machines:
+            The goal was to understand, hands-on, why WEP is considered broken and how penetration testers
+            use packet analysis and statistical attacks to recover legacy Wi-Fi keys.
         </p>
 
         <ul>
-            <li><strong>ADMIN-01 — Kali Linux:</strong> My administration and security workstation.</li>
-            <li><strong>APP-SRV-01 — Ubuntu Server:</strong> My application/server machine.</li>
+            <li><strong>VM used:</strong> Kali – Internal Workstation</li>
+            <li><strong>Capture file:</strong> <code>lab5wep-demo.cap</code></li>
+            <li><strong>Target network:</strong> <code>ccni-test</code> (WEP-encrypted)</li>
+            <li><strong>Primary tool:</strong> Aircrack-ng suite</li>
         </ul>
-
-        <p>
-            The environment is designed to allow me to practice both IT infrastructure
-            administration and cybersecurity. Rather than only studying these concepts
-            in class, I am configuring the systems myself, testing connectivity,
-            applying security controls, troubleshooting problems, and documenting my work.
-        </p>
 
     </section>
 
 
     <section class="blog-section">
 
-        <h2>Lab Architecture</h2>
-
-        <p>
-            The Windows computer acts as the physical host, while Oracle VirtualBox
-            provides the virtualization platform for the Linux systems.
-        </p>
+        <h2>Workflow</h2>
 
         <div class="architecture-box">
-
 <pre><code>
-                    WINDOWS HOST
-                         │
-                    Oracle VirtualBox
-                         │
-             ┌───────────┴───────────┐
-             │                       │
-       ADMIN-01                  APP-SRV-01
-      Kali Linux              Ubuntu Server
-     Admin/Security            Application
-      Workstation                Server
-             │                       │
-             └────── Lab Network ────┘
-                 192.168.56.0/24
+   Packet Capture (.cap)
+          │
+          ▼
+   Wireshark Analysis
+   (802.11 frames, Beacon Frames)
+          │
+          ▼
+   Aircrack-ng Suite
+   airmon-ng → airodump-ng → aireplay-ng → aircrack-ng
+          │
+          ▼
+   WEP Key Recovered
 </code></pre>
-
         </div>
 
         <p class="image-caption">
-            Figure 1 — Enterprise-style virtual lab architecture.
+            Figure 1 — General wireless auditing workflow used in this lab.
         </p>
 
     </section>
@@ -105,324 +91,101 @@
         <h2>Work Completed</h2>
 
 
-        <h3>1. Virtual Machine Deployment</h3>
+        <h3>1. Opening the Capture File</h3>
 
         <p>
-            I established the initial virtualized environment using Oracle VirtualBox.
+            I opened Kali – Internal Workstation and navigated to the lab resources to locate the capture file
+            for this exercise:
         </p>
 
-        <p>
-            The lab contains:
-        </p>
-
-        <ul>
-            <li>A Kali Linux virtual machine</li>
-            <li>An Ubuntu Server virtual machine</li>
-            <li>A Windows host operating system</li>
-            <li>Virtual networking between the Linux systems</li>
-        </ul>
+<pre><code>cd /root/.cache/.fr-xiWTPy/Lab\ Resources/Module\ 5/</code></pre>
 
         <p>
-            Kali Linux serves as the administrative and security workstation, while
-            Ubuntu Server provides the server environment that I will continue building
-            throughout the project.
+            The backslashes tell Linux that the space is part of the folder name rather than the start of a
+            new command — an important detail when navigating directories with spaces in their names.
         </p>
 
 
-        <h3>2. Ubuntu Server Configuration</h3>
+        <h3>2. Navigating Wireshark</h3>
 
         <p>
-            I deployed Ubuntu Server and configured it as the primary application server.
+            I opened <code>lab5wep-demo.cap</code> in Wireshark to review the captured 802.11 wireless frames.
+            A packet is a small, formatted chunk of data traveling across a network — the same kind of unit that
+            carries videos, pictures, and emails.
         </p>
 
         <p>
-            The server was renamed from the default Ubuntu hostname to:
-        </p>
-
-<pre><code>APP-SRV-01</code></pre>
-
-        <p>
-            The hostname allows the server to follow a naming convention similar to
-            what might be used in an organizational IT environment.
-        </p>
-
-        <p>
-            The Ubuntu server uses the account:
-        </p>
-
-<pre><code>ubuntu</code></pre>
-
-        <p>
-            and the terminal prompt identifies the system as:
-        </p>
-
-<pre><code>ubuntu@app-srv-01</code></pre>
-
-
-        <h3>3. Network Configuration</h3>
-
-        <p>
-            I configured the Ubuntu server with two network interfaces.
-        </p>
-
-        <h3>Adapter 1 — NAT</h3>
-
-        <p>
-            The first interface provides external network connectivity through VirtualBox NAT.
-        </p>
-
-<pre><code>
-Interface: enp0s3
-IP Address: 10.0.2.15
-Gateway: 10.0.2.2
-</code></pre>
-
-
-        <h3>Adapter 2 — Host-Only Network</h3>
-
-        <p>
-            The second interface provides communication between the virtual machines
-            on the isolated lab network.
-        </p>
-
-<pre><code>
-Interface: enp0s8
-IP Address: 192.168.56.101
-Network: 192.168.56.0/24
-</code></pre>
-
-        <p>
-            This gives the lab a separate internal network that can be used for
-            administration, testing, and future security exercises.
-        </p>
-
-
-        <h3>4. SSH Remote Administration</h3>
-
-        <p>
-            I configured OpenSSH on the Ubuntu server so that it can be remotely
-            administered from Kali Linux.
-        </p>
-
-        <p>
-            I verified that the SSH service was active and configured the server
-            for remote administration.
-        </p>
-
-<pre><code>
-SSH
-Port: 22
-</code></pre>
-
-        <p>
-            I also tested connecting from Kali to the Ubuntu server using:
-        </p>
-
-<pre><code>ssh ubuntu@192.168.56.101</code></pre>
-
-        <p>
-            This allows Kali Linux to function as my administrative workstation
-            instead of requiring me to perform every server-management task directly
-            from the Ubuntu console.
-        </p>
-
-
-        <h3>5. SSH Key Authentication</h3>
-
-        <p>
-            I generated and configured an SSH key pair for secure remote authentication.
-        </p>
-
-        <p>
-            The Kali workstation contains an SSH private/public key pair, while the
-            Ubuntu server is configured to support public-key authentication.
-        </p>
-
-        <p>
-            This provides experience with a more secure method of remote administration
-            than relying solely on passwords.
-        </p>
-
-        <p>
-            I also configured SSH so that password-based authentication is disabled
-            after verifying that key-based authentication worked.
-        </p>
-
-        <p>
-            The goal is to reduce the risk associated with password-based remote access.
-        </p>
-
-
-        <h3>6. Linux User and Privilege Management</h3>
-
-        <p>
-            I examined the Ubuntu user's permissions and group memberships.
-        </p>
-
-        <p>
-            The <code>ubuntu</code> account has membership in groups including:
-        </p>
-
-<pre><code>
-sudo
-adm
-users
-</code></pre>
-
-        <p>
-            The <code>sudo</code> group allows the account to perform administrative
-            tasks when necessary.
-        </p>
-
-        <p>
-            This gave me hands-on experience with the Linux principle of privilege
-            management, where administrative capabilities should be controlled rather
-            than automatically granted to every user.
-        </p>
-
-
-        <h3>7. UFW Firewall Configuration</h3>
-
-        <p>
-            I configured the Uncomplicated Firewall (UFW) on the Ubuntu server.
-        </p>
-
-        <p>
-            The firewall was configured with:
-        </p>
-
-<pre><code>
-Status: active
-Logging: on (low)
-Default: deny incoming
-Default: allow outgoing
-</code></pre>
-
-        <p>
-            SSH was explicitly permitted:
-        </p>
-
-<pre><code>22/tcp     ALLOW IN</code></pre>
-
-        <p>
-            This means unsolicited incoming connections are denied by default,
-            while SSH is allowed so that I can continue administering the server
-            remotely.
-        </p>
-
-        <p>
-            The firewall configuration demonstrates the security principle of
-            default deny, where network access is restricted unless it has been
-            explicitly permitted.
-        </p>
-
-
-        <h3>8. Firewall Verification</h3>
-
-        <p>
-            After configuring UFW, I verified the firewall configuration rather
-            than assuming it was working.
-        </p>
-
-        <p>
-            The configuration was checked using:
-        </p>
-
-<pre><code>sudo ufw status verbose</code></pre>
-
-        <p>
-            The resulting configuration showed that the firewall was active and
-            that SSH was permitted.
-        </p>
-
-        <p>
-            This is an important part of infrastructure administration because
-            security configurations should be tested and verified, not simply configured.
-        </p>
-
-
-        <h3>9. Linux System Administration</h3>
-
-        <p>
-            Throughout the project, I have also practiced basic Linux system
-            administration tasks, including:
+            Reviewing the 802.11 frames surfaced three important concepts:
         </p>
 
         <ul>
-            <li>Navigating the Linux filesystem</li>
-            <li>Using the terminal</li>
-            <li>Managing users and permissions</li>
-            <li>Checking services</li>
-            <li>Working with SSH</li>
-            <li>Managing firewall rules</li>
-            <li>Checking network interfaces</li>
-            <li>Verifying IP addresses</li>
-            <li>Installing and updating packages</li>
-            <li>Troubleshooting configuration problems</li>
+            <li>
+                <strong>Beacon Frame:</strong> the signal a router sends out roughly every 100 milliseconds to
+                announce "I'm here, and here's how to connect to me" — similar to a lighthouse flashing its light.
+            </li>
+            <li>
+                <strong>The "To Everyone" address:</strong> because the router broadcasts into the air for any
+                nearby device to hear, the receiver and destination addresses are set to broadcast
+                (<code>ff:ff:ff:ff:ff:ff</code>) so no device is left out.
+            </li>
+            <li>
+                <strong>The router's ID (BSSID):</strong> the router's unique hardware address, so devices know
+                exactly which physical device is broadcasting the signal.
+            </li>
+            <li>
+                <strong>Sequence number:</strong> a tracking number that keeps frames in the right order and
+                ignores duplicates if interference scrambles something in the air.
+            </li>
         </ul>
 
-        <p>
-            I encountered and resolved several issues during the setup process,
-            which reinforced the importance of troubleshooting rather than simply
-            following installation instructions.
-        </p>
 
-
-        <h3>10. System Updates and Time Synchronization</h3>
+        <h3>3. Using the Aircrack-ng Suite</h3>
 
         <p>
-            I performed system updates on the Ubuntu server and encountered a
-            package-management issue related to system time synchronization.
-        </p>
-
-        <p>
-            The system initially reported a problem with repository release-file
-            timestamps. I investigated the issue and corrected the server's time
-            synchronization.
-        </p>
-
-        <p>
-            I used:
-        </p>
-
-<pre><code>chronyc makestep</code></pre>
-
-        <p>
-            to correct the system clock and then continued with package management.
-        </p>
-
-        <p>
-            This was useful troubleshooting experience because it demonstrated
-            how seemingly unrelated system settings can affect security updates
-            and package repositories.
-        </p>
-
-
-        <h3>11. Documentation</h3>
-
-        <p>
-            I am documenting the lab as I build it rather than waiting until the
-            project is finished.
-        </p>
-
-        <p>
-            My documentation includes:
+            Aircrack-ng is used to perform complete wireless network security auditing and penetration testing.
+            It comes with a collection of complementary tools:
         </p>
 
         <ul>
-            <li>Configuration steps</li>
-            <li>Commands used</li>
-            <li>Network settings</li>
-            <li>Security configurations</li>
-            <li>Troubleshooting steps</li>
-            <li>Screenshots</li>
-            <li>Successful test results</li>
-            <li>Explanations of why configurations were implemented</li>
+            <li><strong>airmon-ng:</strong> enables and disables monitor mode on a wireless card, letting the computer listen to all nearby Wi-Fi traffic instead of only traffic meant for it.</li>
+            <li><strong>airodump-ng:</strong> captures packets, scans surrounding wireless networks, and displays active access points — their BSSIDs, channels, and encryption types — along with connected clients.</li>
+            <li><strong>aireplay-ng:</strong> injects frames into a wireless network to generate traffic, deauthenticate legitimate users, or speed up packet collection (such as WEP IVs).</li>
+            <li><strong>aircrack-ng (core tool):</strong> processes the captured <code>.cap</code> or <code>.ivs</code> files to recover the pre-shared key or WEP password.</li>
         </ul>
 
+
+        <h3>4. Running Aircrack-ng</h3>
+
         <p>
-            The goal is to create a technical record that demonstrates not only
-            what I configured, but also that I understand why the configuration matters.
+            With the capture file located, I opened a terminal and ran:
+        </p>
+
+<pre><code>aircrack-ng lab5wep-demo.cap</code></pre>
+
+        <p>
+            The output displayed a list of every Wi-Fi network found inside the capture file. In a real-world
+            scenario, this is the same list an attacker would see — a neighborhood-wide list of nearby routers
+            and their encryption types.
+        </p>
+
+        <p>
+            After the "Index number of target network" prompt, I selected the target network by entering
+            <code>1</code>.
+        </p>
+
+
+        <h3>5. Key Recovery</h3>
+
+        <p>
+            Aircrack-ng processed the capture and recovered the WEP key for the <code>ccni-test</code> network:
+        </p>
+
+<pre><code>SUCCESS!
+KEY FOUND! [ F2:C7:BB:35:B9 ]</code></pre>
+
+        <p>
+            This is the exact WEP encryption key for the target network. In a real-world penetration test,
+            entering this key into a Wi-Fi prompt would grant full access to the network.
         </p>
 
     </section>
@@ -430,164 +193,48 @@ Default: allow outgoing
 
     <section class="blog-section">
 
-        <h2>Current Lab Status</h2>
-
-        <p>
-            At this stage, I have established the foundation of the lab:
-        </p>
-
-        <div class="architecture-box">
-
-<pre><code>
-Windows Host
-     │
-     ▼
-Oracle VirtualBox
-     │
- ┌───┴──────────────┐
- │                  │
- ▼                  ▼
-Kali Linux       Ubuntu Server
-ADMIN-01         APP-SRV-01
- │                  │
- │                  ├── Network configured
- │                  ├── SSH configured
- │                  ├── SSH keys configured
- │                  ├── Password SSH disabled
- │                  ├── User privileges configured
- │                  └── UFW firewall enabled
- │
- └─────── SSH ─────────►
-</code></pre>
-
-        </div>
-
-        <p>
-            The lab has therefore progressed from simply creating virtual machines
-            to establishing a functioning administrative and secured server environment.
-        </p>
-
-    </section>
-
-
-    <section class="blog-section">
-
-        <h2>Skills Practiced</h2>
+        <h2>Key Takeaways</h2>
 
         <div class="skill-group">
-
-            <h3>IT Infrastructure</h3>
-
-            <ul>
-                <li>Virtualization</li>
-                <li>Linux server deployment</li>
-                <li>Network configuration</li>
-                <li>Server administration</li>
-                <li>Remote administration</li>
-                <li>System updates</li>
-            </ul>
-
+            <h3>🔓 WEP Is Broken</h3>
+            <p>
+                WEP encryption is fundamentally insecure because of a mathematical weakness in how it reuses
+                Initialization Vectors (IVs). That weakness lets statistical analysis tools like Aircrack-ng
+                recover the password in seconds — which is why WEP has been deprecated in favor of WPA2/WPA3.
+            </p>
         </div>
 
         <div class="skill-group">
-
-            <h3>Cybersecurity</h3>
-
-            <ul>
-                <li>Access control</li>
-                <li>Authentication</li>
-                <li>SSH hardening</li>
-                <li>Firewall configuration</li>
-                <li>Default-deny security</li>
-                <li>Least privilege</li>
-                <li>Network segmentation</li>
-                <li>Security verification</li>
-            </ul>
-
+            <h3>⌨️ Command-Line Control Matters</h3>
+            <p>
+                I practiced navigating Linux directories with <code>cd</code> and running wireless auditing
+                tools against specific networks (by BSSID) directly from the terminal.
+            </p>
         </div>
 
         <div class="skill-group">
-
-            <h3>Troubleshooting</h3>
-
-            <ul>
-                <li>Network configuration</li>
-                <li>SSH connectivity</li>
-                <li>Linux services</li>
-                <li>System time synchronization</li>
-                <li>Package-management issues</li>
-            </ul>
-
+            <h3>📡 Wi-Fi Is Inherently Public</h3>
+            <p>
+                Routers constantly announce their presence through Beacon Frames and the broadcast address
+                (<code>ff:ff:ff:ff:ff:ff</code>), meaning anyone nearby can detect and audit surrounding
+                networks — a reminder of why strong, modern encryption matters.
+            </p>
         </div>
 
         <div class="skill-group">
-
-            <h3>Documentation</h3>
-
-            <ul>
-                <li>Technical documentation</li>
-                <li>Configuration recording</li>
-                <li>Troubleshooting documentation</li>
-                <li>Portfolio documentation</li>
-            </ul>
-
-        </div>
-
-    </section>
-
-
-    <section class="blog-section">
-
-        <h2>Next Phase</h2>
-
-        <p>
-            The current environment provides the foundation for the next stages
-            of the project. I plan to continue developing the lab by introducing
-            server applications, databases, containers, logging, monitoring,
-            and additional security testing.
-        </p>
-
-        <p>
-            The long-term goal is to evolve the environment into a small
-            enterprise-style infrastructure and cybersecurity environment where
-            I can practice:
-        </p>
-
-        <div class="architecture-box">
-
-<pre><code>
-Deployment
-    ↓
-Configuration
-    ↓
-Access Control
-    ↓
-Network Security
-    ↓
-Applications
-    ↓
-Logging & Monitoring
-    ↓
-Security Testing
-    ↓
-Incident Detection
-    ↓
-Troubleshooting
-    ↓
-Documentation
-</code></pre>
-
+            <h3>✅ Hands-On Validation</h3>
+            <p>
+                I confirmed the attack worked by extracting and verifying the exact recovered key
+                (<code>F2:C7:BB:35:B9</code>) with 100% accuracy.
+            </p>
         </div>
 
         <div class="info-box">
-
             <p>
-                This project is intended to demonstrate my ability to move beyond
-                theoretical cybersecurity knowledge and apply IT infrastructure,
-                networking, Linux administration, and security concepts in a
-                hands-on environment.
+                This exercise reinforced why legacy encryption standards like WEP should never be used in
+                production networks, and gave me practical experience with the packet-capture and auditing
+                workflow (Wireshark + Aircrack-ng) used by security professionals to assess wireless network risk.
             </p>
-
         </div>
 
     </section>

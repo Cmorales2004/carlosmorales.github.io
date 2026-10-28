@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireless Network Security Audit | Carlos Morales</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/main.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="../index.html" class="brand"><span class="logo">CM</span> Carlos Morales</a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <div class="nav-links">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../about.html" class="nav-link">About</a>
+        <a href="../projects.html" class="nav-link active">Projects</a>
+        <a href="../writing.html" class="nav-link">Publications</a>
+        <a href="../gallery.html" class="nav-link">Gallery</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+    </div>
+</nav>
+
+<header class="page-hero">
+    <span class="eyebrow">Case Study · Lab Exercise</span>
+    <h1>Wireless Network Security Audit</h1>
+    <p>WEP key recovery and an introduction to WPA/WPA2 decryption, performed in a Kali Linux lab environment.</p>
+</header>
+
+<main class="blog-container">
+
+    <a href="../projects.html" class="back-link">← Back to projects</a>
+
+    <section class="blog-section">
+
+        <h2>Project Overview</h2>
+
+        <p>
+            In this lab, I performed a wireless network security audit focused on recovering a WEP
+            (Wired Equivalent Privacy) encryption key from a captured packet file, using the industry-standard
+            Aircrack-ng suite inside a Kali Linux workstation.
+        </p>
+
+        <p>
+            The goal was to understand, hands-on, why WEP is considered broken and how penetration testers
+            use packet analysis and statistical attacks to recover legacy Wi-Fi keys.
+        </p>
+
+        <ul>
+            <li><strong>VM used:</strong> Kali – Internal Workstation</li>
+            <li><strong>Capture file:</strong> <code>lab5wep-demo.cap</code></li>
+            <li><strong>Target network:</strong> <code>ccni-test</code> (WEP-encrypted)</li>
+            <li><strong>Primary tool:</strong> Aircrack-ng suite</li>
+        </ul>
+
+    </section>
+
+
+    <section class="blog-section">
+
+        <h2>Workflow</h2>
+
+        <div class="architecture-box">
+<pre><code>
+   Packet Capture (.cap)
+          │
+          ▼
+   Wireshark Analysis
+   (802.11 frames, Beacon Frames)
+          │
+          ▼
+   Aircrack-ng Suite
+   airmon-ng → airodump-ng → aireplay-ng → aircrack-ng
+          │
+          ▼
+   WEP Key Recovered
+</code></pre>
+        </div>
+
+        <p class="image-caption">
+            Figure 1 — General wireless auditing workflow used in this lab.
+        </p>
+
+    </section>
+
+
+    <section class="blog-section">
+
+        <h2>Work Completed</h2>
+
+
+        <h3>1. Opening the Capture File</h3>
+
+        <p>
+            I opened Kali – Internal Workstation and navigated to the lab resources to locate the capture file
+            for this exercise:
+        </p>
+
+<pre><code>cd /root/.cache/.fr-xiWTPy/Lab\ Resources/Module\ 5/</code></pre>
+
+        <p>
+            The backslashes tell Linux that the space is part of the folder name rather than the start of a
+            new command — an important detail when navigating directories with spaces in their names.
+        </p>
+
+
+        <h3>2. Navigating Wireshark</h3>
+
+        <p>
+            I opened <code>lab5wep-demo.cap</code> in Wireshark to review the captured 802.11 wireless frames.
+            A packet is a small, formatted chunk of data traveling across a network — the same kind of unit that
+            carries videos, pictures, and emails.
+        </p>
+
+        <p>
+            Reviewing the 802.11 frames surfaced three important concepts:
+        </p>
+
+        <ul>
+            <li>
+                <strong>Beacon Frame:</strong> the signal a router sends out roughly every 100 milliseconds to
+                announce "I'm here, and here's how to connect to me" — similar to a lighthouse flashing its light.
+            </li>
+            <li>
+                <strong>The "To Everyone" address:</strong> because the router broadcasts into the air for any
+                nearby device to hear, the receiver and destination addresses are set to broadcast
+                (<code>ff:ff:ff:ff:ff:ff</code>) so no device is left out.
+            </li>
+            <li>
+                <strong>The router's ID (BSSID):</strong> the router's unique hardware address, so devices know
+                exactly which physical device is broadcasting the signal.
+            </li>
+            <li>
+                <strong>Sequence number:</strong> a tracking number that keeps frames in the right order and
+                ignores duplicates if interference scrambles something in the air.
+            </li>
+        </ul>
+
+
+        <h3>3. Using the Aircrack-ng Suite</h3>
+
+        <p>
+            Aircrack-ng is used to perform complete wireless network security auditing and penetration testing.
+            It comes with a collection of complementary tools:
+        </p>
+
+        <ul>
+            <li><strong>airmon-ng:</strong> enables and disables monitor mode on a wireless card, letting the computer listen to all nearby Wi-Fi traffic instead of only traffic meant for it.</li>
+            <li><strong>airodump-ng:</strong> captures packets, scans surrounding wireless networks, and displays active access points — their BSSIDs, channels, and encryption types — along with connected clients.</li>
+            <li><strong>aireplay-ng:</strong> injects frames into a wireless network to generate traffic, deauthenticate legitimate users, or speed up packet collection (such as WEP IVs).</li>
+            <li><strong>aircrack-ng (core tool):</strong> processes the captured <code>.cap</code> or <code>.ivs</code> files to recover the pre-shared key or WEP password.</li>
+        </ul>
+
+
+        <h3>4. Running Aircrack-ng</h3>
+
+        <p>
+            With the capture file located, I opened a terminal and ran:
+        </p>
+
+<pre><code>aircrack-ng lab5wep-demo.cap</code></pre>
+
+        <p>
+            The output displayed a list of every Wi-Fi network found inside the capture file. In a real-world
+            scenario, this is the same list an attacker would see — a neighborhood-wide list of nearby routers
+            and their encryption types.
+        </p>
+
+        <p>
+            After the "Index number of target network" prompt, I selected the target network by entering
+            <code>1</code>.
+        </p>
+
+
+        <h3>5. Key Recovery</h3>
+
+        <p>
+            Aircrack-ng processed the capture and recovered the WEP key for the <code>ccni-test</code> network:
+        </p>
+
+<pre><code>SUCCESS!
+KEY FOUND! [ F2:C7:BB:35:B9 ]</code></pre>
+
+        <p>
+            This is the exact WEP encryption key for the target network. In a real-world penetration test,
+            entering this key into a Wi-Fi prompt would grant full access to the network.
+        </p>
+
+    </section>
+
+
+    <section class="blog-section">
+
+        <h2>Key Takeaways</h2>
+
+        <div class="skill-group">
+            <h3>🔓 WEP Is Broken</h3>
+            <p>
+                WEP encryption is fundamentally insecure because of a mathematical weakness in how it reuses
+                Initialization Vectors (IVs). That weakness lets statistical analysis tools like Aircrack-ng
+                recover the password in seconds — which is why WEP has been deprecated in favor of WPA2/WPA3.
+            </p>
+        </div>
+
+        <div class="skill-group">
+            <h3>⌨️ Command-Line Control Matters</h3>
+            <p>
+                I practiced navigating Linux directories with <code>cd</code> and running wireless auditing
+                tools against specific networks (by BSSID) directly from the terminal.
+            </p>
+        </div>
+
+        <div class="skill-group">
+            <h3>📡 Wi-Fi Is Inherently Public</h3>
+            <p>
+                Routers constantly announce their presence through Beacon Frames and the broadcast address
+                (<code>ff:ff:ff:ff:ff:ff</code>), meaning anyone nearby can detect and audit surrounding
+                networks — a reminder of why strong, modern encryption matters.
+            </p>
+        </div>
+
+        <div class="skill-group">
+            <h3>✅ Hands-On Validation</h3>
+            <p>
+                I confirmed the attack worked by extracting and verifying the exact recovered key
+                (<code>F2:C7:BB:35:B9</code>) with 100% accuracy.
+            </p>
+        </div>
+
+        <div class="info-box">
+            <p>
+                This exercise reinforced why legacy encryption standards like WEP should never be used in
+                production networks, and gave me practical experience with the packet-capture and auditing
+                workflow (Wireshark + Aircrack-ng) used by security professionals to assess wireless network risk.
+            </p>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    © 2026 Carlos Morales | Cybersecurity Portfolio
+</footer>
+
+</body>
+</html>
