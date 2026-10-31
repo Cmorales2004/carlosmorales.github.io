@@ -5,7 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wireless Network Security Audit | Carlos Morales</title>
     <link rel="stylesheet" href="../css/style.css">
-    <script src="../js/main.js"></script>
+    <script src="../js/main.js" defer></script>
+    <style>
+        /* Much darker, high-contrast blue for links and code text */
+        a, a:visited {
+            color: #003366;
+        }
+        a:hover {
+            color: #001a33;
+        }
+        code {
+            color: #00274d;
+            background-color: #e2e8f0;
+            padding: 0.15em 0.3em;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+    </style>
 </head>
 
 <body>
@@ -72,20 +88,19 @@
 
         <ul>
             <li>
-                A <strong>Beacon Frame</strong> is the flashing light that the lighthouse sends out every 100
+                A <strong>Beacon Frame</strong> acts like a lighthouse that flashes its light every 100
                 milliseconds to say, "Hey, I'm here! Here is my name, and here is how you can connect to me."
             </li>
             <li>
-                The "To Everyone" Address: Because the router is shouting into the air for any nearby device to
-                hear, the receiver and destination addresses are set to Broadcast (<code>ff:ff:ff:ff:ff:ff</code>)
-                so no specific device is left out.
+                The <strong>Broadcast Address:</strong> Because the router is shouting into the air for any nearby device to
+                hear, the receiver and destination addresses show up as <code>Broadcast (ff:ff:ff:ff:ff:ff)</code>—effectively acting as a "to everyone" address so no specific device is left out.
             </li>
             <li>
-                The Router's ID (MAC Address): It lists the router's unique hardware address (the BSSID) so
+                The <strong>Router's ID (MAC Address):</strong> It lists the router's unique hardware address (the BSSID) so
                 devices know exactly which physical device is broadcasting the signal.
             </li>
             <li>
-                The Packet Counter (Sequence Number): A tracking number that makes sure the frames are read in
+                The <strong>Packet Counter (Sequence Number):</strong> A tracking number that makes sure the frames are read in
                 the right order and ignores duplicates if interference scrambles something in the air.
             </li>
         </ul>
@@ -106,20 +121,18 @@
         </p>
 
         <ul>
-            <li><strong>airmon-ng:</strong> Used to enable and disable "monitor mode" on your wireless network card, allowing your computer to listen to all nearby Wi-Fi traffic rather than just traffic intended for your device.</li>
+            <li><strong>airmon-ng:</strong> Used to enable and disable "monitor mode" on my wireless network card, allowing my computer to listen to all nearby Wi-Fi traffic rather than just traffic intended for my device.</li>
             <li><strong>airodump-ng:</strong> Used for packet capture; it scans surrounding wireless networks, displays active access points (showing BSSIDs, channels, and encryption types), and tracks connected clients.</li>
             <li><strong>aireplay-ng:</strong> Used to inject frames into a wireless network to generate traffic, deauthenticate legitimate users, or speed up the collection of packets (such as WEP IVs).</li>
-            <li><strong>aircrack-ng</strong> (the core tool): The actual cracking engine that processes the captured <code>.cap</code> or <code>.ivs</code> files to recover the pre-shared key or WEP password.</li>
+            <li><strong>aircrack-ng (the core tool):</strong> The actual cracking engine that processes the captured <code>.cap</code> or <code>.ivs</code> files to recover the pre-shared key or WEP password.</li>
         </ul>
 
         <p>
             5. To use aircrack-ng I opened a terminal window and used the following command:
         </p>
-
         <img src="../assets/wep-audit-04-cd-command.jpg" alt="Terminal command changing into the lab resources directory" class="blog-image">
-
         <ul>
-            <li>The path is the exact address on your computer showing where that folder is located.</li>
+            <li>The path is the exact address on my computer showing where that folder is located.</li>
             <li>The backslashes (<code>\</code>) tell Linux that the space is part of the folder name, not the start of a new command.</li>
         </ul>
 
@@ -158,38 +171,47 @@ KEY FOUND! [ F2:C7:BB:35:B9 ]</code></pre>
 
     <section class="blog-section">
 
-        <h2>My Takeaway</h2>
+        <h2>What I Learned</h2>
 
         <div class="skill-group">
-            <h3>🔓 WEP Is Broken</h3>
+            <h3>🔓 WEP Is Obsolete and Insecure</h3>
             <p>
-                WEP encryption is completely insecure because its mathematical weakness (Initialization Vectors)
-                allows anyone to crack the password in seconds using statistical analysis tools like
-                <code>aircrack-ng</code>.
+                I learned that Wired Equivalent Privacy (WEP) is completely obsolete and insecure because its mathematical weakness (Initialization Vectors) allows anyone to crack the password in seconds using statistical analysis tools like <code>aircrack-ng</code>.
             </p>
         </div>
 
         <div class="skill-group">
             <h3>⌨️ Command-Line Control Matters</h3>
             <p>
-                You learned how to navigate Linux directories (<code>cd</code>) and run wireless tools targeting
-                specific networks (BSSIDs) via terminal commands.
+                I reinforced how to navigate Linux directories (<code>cd</code>) and execute target wireless auditing tools against specific access points (BSSIDs) via command-line interface.
             </p>
         </div>
 
         <div class="skill-group">
             <h3>📡 Wi-Fi Is Inherently Public</h3>
             <p>
-                Routers constantly shout their presence using Beacon Frames and the broadcast address
-                (<code>ff:ff:ff:ff:ff:ff</code>), meaning anyone nearby can detect and audit surrounding networks.
+                I discovered that routers constantly broadcast their presence using Beacon Frames and the broadcast address (<code>ff:ff:ff:ff:ff:ff</code>), meaning anyone nearby can detect and audit surrounding networks.
+            </p>
+        </div>
+
+        <div class="skill-group">
+            <h3>🤖 Wireless Automation with Wifite2</h3>
+            <p>
+                I learned about <strong>Wifite2</strong>, a Python-based automated wireless attack framework that acts as an orchestrator instead of running tools like <code>airmon-ng</code>, <code>airodump-ng</code>, <code>aireplay-ng</code>, and <code>aircrack-ng</code> step-by-step in separate terminal windows. I am very interested in learning more about it and attempting to use it within my VM.
+            </p>
+        </div>
+
+        <div class="skill-group">
+            <h3>🚀 Modern Clientless Attacks & Hashcat</h3>
+            <p>
+                Lastly, I learned about advanced wireless techniques, such as using <code>hcxdumptool</code> to capture PMKID data directly from an access point without requiring an active connected client, and leveraging <strong>Hashcat</strong> for high-speed, GPU-accelerated password recovery that is orders of magnitude faster than traditional CPU-based cracking.
             </p>
         </div>
 
         <div class="skill-group">
             <h3>✅ Hands-On Validation</h3>
             <p>
-                You proved the attack worked by extracting and verifying the exact key
-                (<code>F2:C7:BB:35:B9</code>) with 100% accuracy.
+                I successfully proved the vulnerability by extracting and verifying the exact encryption key (<code>F2:C7:BB:35:B9</code>) with 100% accuracy.
             </p>
         </div>
 
