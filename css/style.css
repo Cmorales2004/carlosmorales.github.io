@@ -437,6 +437,12 @@ p { margin: 0 0 14px; color: var(--muted); }
 /* ===== CONTACT ===== */
 .contact-card { text-align: center; }
 .contact-card .icon { margin-left: auto; margin-right: auto; }
+.contact-card .icon img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    display: block;
+}
 
 .cta-band {
     background: linear-gradient(135deg, var(--navy), var(--navy-2));
